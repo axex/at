@@ -60,7 +60,7 @@ Environment.prototype.saveDetail = function(updateObj) {
     if(updateObj.accountStr) {
 
         updateObj.accountStr.split('\n').forEach(function(line){
-            var numberReg = /\d+/;
+            var numberReg = /\d+[\s|\d]*\d+/;
             var numberExec = numberReg.exec(line);
             if(numberExec){
                 updateObj.accounts.push({
