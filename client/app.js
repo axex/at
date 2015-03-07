@@ -18,22 +18,16 @@ angular.module('at', [])
 
 function startBrowser (event) {
   event.preventDefault();
-  var $this = $(this);
+  var $this = $(event.currentTarget);
 
-  var number = $this.find('.account-number').text();
+  var number = $this.parents('li').find('.account-number').text();
   var url = $this.parents('.panel').find('.env-url').text();
+  var browser = $this.text();
 
-  app.startBrowse('', {
+  app.startBrowse(browser, {
     loginName: number,
     password: 'Test!123',
     action: url + '/login/main.asp'
   });
 }
-
-$(document).ready(function () {
-  $('.btn-start').on('click', function () {
-
-    app.startBrowse('', []);
-  });
-});
 
