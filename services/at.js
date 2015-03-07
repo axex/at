@@ -4,6 +4,8 @@ var shell = require('shelljs');
 var Env = require('../services/environments');
 var bsHelper = require('../services/browserHelper');
 
+require('../services/at-server');
+
 var exec = require('child_process').exec;
 
 function At () {
