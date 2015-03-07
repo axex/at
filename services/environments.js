@@ -13,7 +13,7 @@ function Environment() {
 }
 
 Environment.prototype.getList = function () {
-    return dataHelper.read();
+    return dataHelper.read() || [];
 };
 
 Environment.prototype.getDetail = function(id) {
@@ -24,23 +24,32 @@ Environment.prototype.getDetail = function(id) {
 
 Environment.prototype.remove = function(id) {
     var list = this.getList();
-    var index = list.indexOf( this.getDetail(id) );
+    var index = -1;
+    list.forEach(function(item, i){
+        if(item.id == id){
+            index = i;
+        }
+    });
     if(index >= 0) {
         list.splice(index,1);
+        dataHelper.write(list);
     }
-    dataHelper.write();
 };
 
 Environment.prototype.saveDetail = function(updateObj) {
     var detail = this.getDetail(updateObj.id)
         , hasData = !!detail;
 
+    var list = this.getList();
+
     if(!hasData){
         detail = new envModel();
-        this.getList().push(detail);
+        list.push(detail);
     }
-    extend(detail, updateObj);
-    dataHelper.write();
+
+    extend(true, detail, updateObj);
+
+    dataHelper.write(list);
 
     return detail;
 };

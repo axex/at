@@ -7,17 +7,18 @@ var fs = require('fs-extra')
     , jsonFilePath = path.join(dataPath, 'evn.json')
     , envData = [];
 
-if(fs.existsSync(jsonFilePath)){
-    envData = fs.readJSONSync(jsonFilePath, 'utf8');
-}
+
 
 fs.ensureDirSync( dataPath );
 
 module.exports = {
-    write: function (){
-        fs.writeJSONSync(jsonFilePath, envData, 'utf8' );
+    write: function (list){
+        fs.writeJSONSync(jsonFilePath, list, 'utf8' );
     }
     , read: function() {
-        return envData;
+        if(fs.existsSync(jsonFilePath)){
+            return fs.readJSONSync(jsonFilePath, 'utf8');
+        }
+        return [];
     }
 };

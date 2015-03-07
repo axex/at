@@ -18,12 +18,12 @@ describe("services.environment", function(){
         var envList = services.getList();
         var id;
         it('envList length should add 1', function(){
-            var length1 = envList.length;
+            var length1 = services.getList().length;
             var savedResult = services.saveDetail({
                 name: 'test env'
                 , url: 'http://localhost:9901/login/login.asp'
             });
-            var length2 = envList.length;
+            var length2 = services.getList().length;
             assert.equal(length1+1, length2);
             id = savedResult.id;
         });
@@ -39,10 +39,11 @@ describe("services.environment", function(){
             assert(newData.name , newData1.name);
         });
 
+
         it('new data should be remove', function(){
-            var length1 = envList.length;
+            var length1 = services.getList().length;
             services.remove(id);
-            var length2 = envList.length;
+            var length2 = services.getList().length;
             assert.equal(length1-1, length2);
         });
     });
