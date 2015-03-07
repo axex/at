@@ -6,19 +6,19 @@
     "accounts": [
       {
         "number": "15878010100",
-        "accountType": "TELUS Standard"
+        "type": "TELUS Standard"
       },
       {
         "number": "18664090010",
-        "accountType": "ATT Standard"
+        "type": "ATT Standard"
       },
       {
         "number": "18888460008",
-        "accountType": "CA Office"
+        "type": "CA Office"
       },
       {
         "number": "18776290009",
-        "accountType": "RC Office"
+        "type": "RC Office"
       }
     ],
     "accountStr": "15878010100 TELUS Standard\n18664090010 ATT Standard\n18888460008 CA Office\n18776290009 RC Office"
@@ -30,19 +30,19 @@
     "accounts": [
       {
         "number": "15875200190",
-        "accountType": "TELUS"
+        "type": "TELUS"
       },
       {
         "number": "18776290008",
-        "accountType": "ATT Standard"
+        "type": "ATT Standard"
       },
       {
         "number": "18002960003",
-        "accountType": "CA Office"
+        "type": "CA Office"
       },
       {
         "number": "18664090011",
-        "accountType": "RC Office"
+        "type": "RC Office"
       }
     ],
     "accountStr": "15875200190 TELUS\n18776290008 ATT Standard\n18002960003 CA Office\n18664090011 RC Office"

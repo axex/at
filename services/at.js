@@ -22,8 +22,16 @@ At.prototype.events = {
  * Register `open.browser` event.
  */
 At.prototype.onOpenBrowser = function () {
-  this.on(this.events.openBrowser, function (browser) {
+  this.on(this.events.openBrowser, function (browser, params) {
     var cmd = bsHelper[browser].cmd;
+    var paramsArr = [];
+
+    for (var p in params) {
+      if (params.hasOwnProperty(p)) {
+        paramsArr.push(p + '=' + encodeURIComponent(params[p]));
+      }
+    }
+    cmd += '#' + paramsArr.join(';');
     console.log('Executing %s', cmd);
     exec(cmd);
   });
@@ -33,28 +41,29 @@ At.prototype.onOpenBrowser = function () {
  * Initialize.
  */
 At.prototype.init = function () {
-  var env = new Env();
-  console.log('env.getList: ', env.getList());
-  console.log('env.getDetail: ', env.getDetail());
-
   this.onOpenBrowser();
+};
+
+At.prototype.getEnv = function () {
+  var env = new Env();
+  return env.getList();
 };
 
 /**
  * Emit `openBrowser` event.
  */
-At.prototype.startBrowse = function (browser) {
-  browser = browser || "defaults";
+At.prototype.startBrowse = function (browser, params) {
+  browser = browser || "ie";
   console.log('Starting browser [%s]...', browser);
 
-  this.emit(this.events.openBrowser, browser);
+  this.emit(this.events.openBrowser, browser, params);
 };
 
 /**
  * Get a list of support browsers, and commands.
  * @returns {Array}
  */
-At.prototype.getBrowser = function () {
+At.prototype.getBrowsers = function () {
   return Object.keys(bsHelper);
 };
 

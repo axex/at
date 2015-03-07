@@ -23,9 +23,6 @@ module.exports = {
   },
   safari: {
     cmd: getStartCommand('safari', url)
-  },
-  defaults: {
-    cmd: getStartCommand("", url)
   }
 };
 

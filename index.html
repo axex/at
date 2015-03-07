@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="at">
   <head>
     <meta charset="utf-8">
     <title>Login helper</title>
@@ -9,13 +9,46 @@
 
     <script src="assets/vendors/jquery/dist/jquery.js"></script>
     <script src="assets/vendors/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="assets/vendors/angular/angular.min.js"></script>
 
   </head>
-  <body>
+  <body ng-controller="ATController">
     <div class="wrap">
       <header></header>
       <article>
+        <section class="env">
+          <div class="panel-group" id="accordion">
 
+            <div ng-repeat="env in environments">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4>
+                    <a ng-href="#collapse{{$index}}" data-toggle="collapse" data-target="#collapse{{$index}}" data-parent="#accordion">
+                      {{env.name}}
+                    </a>
+                  </h4>
+                  <p class="env-url">{{env.url}}</p>
+                </div>
+                <div id="collapse{{$index}}" class="panel-collapse">
+                  <div class="panel-body">
+                    <ul ng-repeat="account in env.accounts">
+                      <li class="account-info">
+                        <span class="account-number">{{account.number}}</span>
+                        -
+                        <span class="account-type">{{account.type}}</span>
+
+                        <span ng-repeat="bs in browsers">
+                          <a href="#" ng-click="startBrowser($event)">{{bs}}</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
       </article>
       <footer>
         <p>You selected:</p>

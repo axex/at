@@ -65,7 +65,7 @@ Environment.prototype.saveDetail = function(updateObj) {
             if(numberExec){
                 updateObj.accounts.push({
                     number: numberExec[0]
-                    , accountType: line.replace(numberExec,'')
+                    , type: line.replace(numberExec,'')
                 });
             }
         });
