@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Login helper</title>
+    <link rel="stylesheet" href="assets/css/main.css"/>
     <link rel="stylesheet" href="assets/css/footer.css"/>
     <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="assets/vendors/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
@@ -16,11 +17,30 @@
     <div class="wrap">
       <header></header>
       <article>
+        <section class="header-utils text-right">
+          <button class="btn btn-primary account-add">Add</button>
+          <div class="account-add hidden">
+            <div class="account-add-name">
+              <label for="">Environment Name:</label>
+              <input type="text" placeholder="Enter environment name."/>
+            </div>
+            <div class="account-add-url">
+              <label for="">Environment Url:</label>
+              <input type="text" placeholder="Enter environment url."/>
+            </div>
+            <textarea class="account-add-accounts" name="" id="" cols="30" rows="10" placeholder="Enter account info here."></textarea>
+
+            <div class="edit-buttons">
+              <button class="btn btn-primary account-add-save">Save</button> &nbsp;
+              <button class="btn btn-danger account-add-cancel">Cancel</button>
+            </div>
+          </div>
+        </section>
         <section class="env">
           <div class="panel-group" id="accordion">
 
             <div ng-repeat="env in environments">
-              <div class="panel panel-default">
+              <div class="panel panel-default" id="env-{{env.id}}">
                 <div class="panel-heading">
                   <h4>
                     <a ng-href="#collapse{{$index}}" data-toggle="collapse" data-target="#collapse{{$index}}" data-parent="#accordion">
@@ -28,10 +48,13 @@
                     </a>
                   </h4>
                   <p class="env-url">{{env.url}}</p>
+                  <p>
+                    <a href="#" class="btn-edit">Edit</a>
+                  </p>
                 </div>
                 <div id="collapse{{$index}}" class="panel-collapse">
                   <div class="panel-body">
-                    <ul ng-repeat="account in env.accounts">
+                    <ul ng-repeat="account in env.accounts" class="account-list">
                       <li class="account-info">
                         <span class="account-number">{{account.number}}</span>
                         -
@@ -42,6 +65,22 @@
                         </span>
                       </li>
                     </ul>
+                    <div class="account-edit hidden">
+                      <div class="account-edit-name">
+                        <label for="">Environment Name:</label>
+                        <input type="text" placeholder="Enter environment name."/>
+                      </div>
+                      <div class="account-edit-url">
+                        <label for="">Environment Url:</label>
+                        <input type="text" placeholder="Enter environment url."/>
+                      </div>
+                      <textarea class="account-edit-accounts" name="" id="" cols="30" rows="10" placeholder="Enter account info here."></textarea>
+
+                      <div class="edit-buttons">
+                        <button class="btn btn-primary btn-save">Save</button> &nbsp;
+                        <button class="btn btn-danger">Cancel</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

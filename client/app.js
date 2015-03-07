@@ -31,3 +31,52 @@ function startBrowser (event) {
   });
 }
 
+$(document).ready(function () {
+  $('.btn-edit').on('click', function () {
+    var $panel = $(this).parents('.panel');
+    $panel.find('.account-edit').removeClass('hidden');
+    $panel.find('.account-list').addClass('hidden');
+  });
+
+  $('.account-add').on('click', function () {
+    $('.account-add').removeClass('hidden');
+  });
+
+  $('.account-add-save').on('click', function () {
+    var $accountAddForm = $(this).parents('.account-add');
+    var envName = $accountAddForm.find('.account-add-name input').val();
+    var envUrl = $accountAddForm.find('.account-add-url input').val();
+    var accounts = $accountAddForm.find('.account-add-accounts').val();
+
+    app.addEnv({
+      name: envName,
+      url: envUrl,
+      accountStr: accounts
+    });
+  });
+
+  $('.account-add-cancel').on('click', function () {
+    $('.account-add').addClass('hidden');
+  });
+
+  $('.btn-save').on('click', function () {
+    var $panel = $(this).parents('.panel');
+    var id = $panel.attr('id');
+    var envName = $panel.find('.account-edit-name input').val();
+    var envUrl = $panel.find('.account-edit-url input').val();
+    var accounts = $panel.find('.account-edit-accounts').val();
+
+    app.updateEnv({
+      id: id,
+      name: envName,
+      url: envUrl,
+      accountStr: accounts
+    })
+  });
+
+  $('.btn-danger').on('click', function () {
+    var $panel = $(this).parents('.panel');
+    $panel.find('.account-list').removeClass('hidden');
+    $panel.find('.account-edit').addClass('hidden');
+  });
+});

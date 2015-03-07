@@ -44,7 +44,7 @@ Environment.prototype.remove = function(id) {
     }
 };
 
-Environment.prototype.saveDetail = function(updateObj) {
+Environment.prototype.save = function(updateObj) {
     var detail = this.getDetail(updateObj.id)
         , hasData = !!detail;
 
@@ -54,7 +54,6 @@ Environment.prototype.saveDetail = function(updateObj) {
         detail = new envModel();
         list.push(detail);
     }
-
 
     updateObj.accounts = [];
     if(updateObj.accountStr) {

@@ -6,6 +6,8 @@ var bsHelper = require('../services/browserHelper');
 
 var exec = require('child_process').exec;
 
+var env = new Env();
+
 function At () {
   EventEmitter.call(this);
 }
@@ -45,8 +47,17 @@ At.prototype.init = function () {
 };
 
 At.prototype.getEnv = function () {
-  var env = new Env();
   return env.getList();
+};
+
+At.prototype.addEnv = function (params) {
+  console.log(params);
+  env.save(params);
+};
+
+At.prototype.updateEnv = function (params) {
+  console.log(params);
+  env.save(params);
 };
 
 /**
