@@ -48,107 +48,15 @@
     "accountStr": "15875200190 TELUS\n18776290008 ATT Standard\n18002960003 CA Office\n18664090011 RC Office"
   },
   {
-    "id": "1425711170574_80",
-    "name": "1",
-    "url": "1",
+    "id": "1425712029898_611",
+    "name": "2",
+    "url": "2",
     "accounts": [
       {
-        "number": "1",
+        "number": "2",
         "type": ""
       }
     ],
-    "accountStr": "1"
-  },
-  {
-    "id": "1425711242760_199",
-    "name": "1",
-    "url": "1",
-    "accounts": [
-      {
-        "number": "1",
-        "type": ""
-      }
-    ],
-    "accountStr": "1"
-  },
-  {
-    "id": "env-1425711242760_199",
-    "name": "TM1-DEV-XIA",
-    "url": "http://service-tm1dev.lab.rcch.ringcentral.com ",
-    "accounts": [
-      {
-        "number": "15878010100",
-        "type": "\tTELUS Standard"
-      },
-      {
-        "number": "15878030220",
-        "type": "\tTELUS Premium"
-      },
-      {
-        "number": "15873150160",
-        "type": "\tTELUS Enterprise"
-      },
-      {
-        "number": "18664090010",
-        "type": "\tATT Standard"
-      },
-      {
-        "number": "18776290010",
-        "type": "\tATT Premium"
-      },
-      {
-        "number": "18002960002",
-        "type": "\tATT Enterprise"
-      },
-      {
-        "number": "18552230011",
-        "type": "\tATT UBP"
-      },
-      {
-        "number": "18776290011",
-        "type": "\tATT UBP"
-      },
-      {
-        "number": "18664090009",
-        "type": "\tCA Fax"
-      },
-      {
-        "number": "18442000003",
-        "type": "\tCA Mobile"
-      },
-      {
-        "number": "18888460008",
-        "type": "\tCA Office"
-      },
-      {
-        "number": "18888460009",
-        "type": "\tRC Annual"
-      },
-      {
-        "number": "18552230010",
-        "type": "\tRC Fax"
-      },
-      {
-        "number": "18888460010",
-        "type": "\tRC Mobile"
-      },
-      {
-        "number": "18776290009",
-        "type": "\tRC Office"
-      },
-      {
-        "number": "441515130006",
-        "type": "\tRC UK Standard"
-      },
-      {
-        "number": "441515130007",
-        "type": "\tRC UK Enterprise"
-      },
-      {
-        "number": "44",
-        "type": " 1170010001\tBT"
-      }
-    ],
-    "accountStr": "15878010100\tTELUS Standard\n15878030220\tTELUS Premium\n15873150160\tTELUS Enterprise\n18664090010\tATT Standard\n18776290010\tATT Premium\n18002960002\tATT Enterprise\n18552230011\tATT UBP\n18776290011\tATT UBP\n18664090009\tCA Fax\n18442000003\tCA Mobile\n18888460008\tCA Office\n18888460009\tRC Annual\n18552230010\tRC Fax\n18888460010\tRC Mobile\n18776290009\tRC Office\n441515130006\tRC UK Standard\n441515130007\tRC UK Enterprise\n44 1170010001\tBT"
+    "accountStr": "2"
   }
 ]

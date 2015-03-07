@@ -18,7 +18,7 @@
       <header></header>
       <article>
         <section class="header-utils text-right">
-          <button class="btn btn-primary account-add">Add</button>
+          <button class="btn btn-primary account-add-btn">Add</button>
           <div class="account-add hidden">
             <div class="account-add-name">
               <label for="">Environment Name:</label>
@@ -40,7 +40,7 @@
           <div class="panel-group" id="accordion">
 
             <div ng-repeat="env in environments">
-              <div class="panel panel-default" id="env-{{env.id}}">
+              <div class="panel panel-default" id="{{env.id}}">
                 <div class="panel-heading">
                   <h4>
                     <a ng-href="#collapse{{$index}}" data-toggle="collapse" data-target="#collapse{{$index}}" data-parent="#accordion">
@@ -49,7 +49,8 @@
                   </h4>
                   <p class="env-url">{{env.url}}</p>
                   <p>
-                    <a href="#" class="btn-edit">Edit</a>
+                    <a href="#" class="btn-edit">Edit</a> &nbsp;
+                    <a href="#" class="bnt-remove">Remove</a>
                   </p>
                 </div>
                 <div id="collapse{{$index}}" class="panel-collapse">

@@ -38,7 +38,7 @@ $(document).ready(function () {
     $panel.find('.account-list').addClass('hidden');
   });
 
-  $('.account-add').on('click', function () {
+  $('.account-add-btn').on('click', function () {
     $('.account-add').removeClass('hidden');
   });
 
@@ -57,6 +57,13 @@ $(document).ready(function () {
 
   $('.account-add-cancel').on('click', function () {
     $('.account-add').addClass('hidden');
+  });
+
+
+  $('.bnt-remove').on('click', function () {
+    var $panel = $(this).parents('.panel');
+    var id = $panel.attr('id');
+    app.removeEnv(id);
   });
 
   $('.btn-save').on('click', function () {

@@ -60,6 +60,11 @@ At.prototype.updateEnv = function (params) {
   env.save(params);
 };
 
+At.prototype.removeEnv = function (id) {
+  if (!id) return;
+  env.remove(id);
+};
+
 /**
  * Emit `openBrowser` event.
  */
