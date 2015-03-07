@@ -22,7 +22,7 @@ Environment.prototype.getDetail = function(id) {
     })[0];
 
     if(detail) {
-        detail.phoneStr = detail.phones.map(function(o){
+        detail.accountStr = detail.accounts.map(function(o){
             return o.number + ' ' + o.accountType;
         }).join('\r\n');
     }
@@ -56,14 +56,14 @@ Environment.prototype.saveDetail = function(updateObj) {
     }
 
 
-    updateObj.phones = [];
-    if(updateObj.phoneStr) {
+    updateObj.accounts = [];
+    if(updateObj.accountStr) {
 
-        updateObj.phoneStr.split('\n').forEach(function(line){
+        updateObj.accountStr.split('\n').forEach(function(line){
             var numberReg = /\d+/;
             var numberExec = numberReg.exec(line);
             if(numberExec){
-                updateObj.phones.push({
+                updateObj.accounts.push({
                     number: numberExec[0]
                     , accountType: line.replace(numberExec,'')
                 });
