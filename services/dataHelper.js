@@ -14,8 +14,8 @@ if(fs.existsSync(jsonFilePath)){
 fs.ensureDirSync( dataPath );
 
 module.exports = {
-    write: function (data){
-        fs.writeJSONSync(jsonFilePath, data, 'utf8' );
+    write: function (){
+        fs.writeJSONSync(jsonFilePath, envData, 'utf8' );
     }
     , read: function() {
         return envData;

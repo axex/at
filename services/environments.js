@@ -19,7 +19,16 @@ Environment.prototype.getList = function () {
 Environment.prototype.getDetail = function(id) {
     return this.getList().filter(function(item){
         return item.id == id;
-    });
+    })[0];
+};
+
+Environment.prototype.remove = function(id) {
+    var list = this.getList();
+    var index = list.indexOf( this.getDetail(id) );
+    if(index >= 0) {
+        list.slice(index,1);
+    }
+    dataHelper.save();
 };
 
 Environment.prototype.saveDetail = function(id, updateObj) {
@@ -31,7 +40,9 @@ Environment.prototype.saveDetail = function(id, updateObj) {
         this.getList().push(detail);
     }
     extend(detail, updateObj);
-    dataHelper.save();
+    dataHelper.write();
+
+    return detail;
 };
 
 module.exports =  Environment;
