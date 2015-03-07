@@ -89,4 +89,15 @@ $(document).ready(function () {
     $panel.find('.account-list').removeClass('hidden');
     $panel.find('.account-edit').addClass('hidden');
   });
+
+  $(window).on('keyup', function(e){
+    switch (e.keyCode){
+      case 123:
+            require('nw.gui').Window.get().showDevTools();
+            break;
+      case 116:
+            document.location.reload(true);
+            break
+    }
+  })
 });
