@@ -4,8 +4,7 @@
   "main": "index.html",
   "dependencies": {
     "extend": "^2.0.0",
-    "fs-extra": "^0.16.4",
-    "shelljs": "^0.3.0"
+    "fs-extra": "^0.16.4"
   },
   "scripts":{
     "test": "mocha test"
