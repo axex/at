@@ -12,17 +12,17 @@ function Environment() {
     }
 }
 
-this.prototype.getList = function () {
+Environment.prototype.getList = function () {
     return dataHelper.read();
 };
 
-this.prototype.getDetail = function(id) {
+Environment.prototype.getDetail = function(id) {
     return this.getList().filter(function(item){
         return item.id == id;
     });
 };
 
-this.prototype.saveDetail = function(id, updateObj) {
+Environment.prototype.saveDetail = function(id, updateObj) {
     var detail = this.getDetail(id)
         , hasData = !!detail;
 
