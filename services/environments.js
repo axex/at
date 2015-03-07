@@ -31,8 +31,8 @@ Environment.prototype.remove = function(id) {
     dataHelper.write();
 };
 
-Environment.prototype.saveDetail = function(id, updateObj) {
-    var detail = this.getDetail(id)
+Environment.prototype.saveDetail = function(updateObj) {
+    var detail = this.getDetail(updateObj.id)
         , hasData = !!detail;
 
     if(!hasData){
