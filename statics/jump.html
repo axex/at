@@ -5,17 +5,47 @@
     <title>Jumping ...</title>
 </head>
 <body>
-<form action="http://tm1-t01-scs01/login/main.asp" method="post" style="display: none">
-    <input name="PIN" type="hidden"/>
-    <input name="p_next_page" type="hidden"/>
-    <input name="rdr" value="/overview.html" type="hidden"/>
-    <input name="support" value="false" type="hidden"/>
-    <label> LoginName <input name="LoginName" value="18888460008"/> </label><br/>
-    <label> Password <input name="Password" value="Test!123"/> </label><br/>
+<form id="jumping-form" action="http://tm1-t01-scs01/login/main.asp" method="post" style="display: none">
+    <input id="pin" name="PIN" type="hidden"/>
+    <input id="p_next_page" name="p_next_page" type="hidden"/>
+    <input id="rdr" name="rdr" value="/overview.html" type="hidden"/>
+    <input id="support" name="support" value="false" type="hidden"/>
+    <label> LoginName <input id="loginname" name="LoginName" value="18888460008"/> </label><br/>
+    <label> Password <input id="password" name="Password" value="Test!123"/> </label><br/>
     <button type="submit"> Let's go</button>
 </form>
 <script>
+    window.onload = function(){
+        var queryStr = document.location.href;
 
+        var queryString = (function () {
+            if (queryStr.indexOf('?') < 0) {
+                return {};
+            }
+            var urlParams = {},
+                    e,
+                    d = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); },
+                    q = queryStr.substring(queryStr.indexOf('?') + 1),
+                    r = /([^&=]+)=?([^&]*)/g;
+
+            while (e = r.exec(q))
+                urlParams[d(e[1]).toLowerCase()] = d(e[2]);
+
+            return urlParams;
+        })();
+
+        for(var key in queryString) {
+            document.getElementById(key) && (document.getElementById(key).value = decodeURIComponent(
+                    queryString[key] ));
+        }
+
+       var form = document.getElementById('jumping-form');
+
+        form.action = queryString.action;
+
+        form.submit();
+
+    };
 </script>
 </body>
 </html>

@@ -11,11 +11,11 @@ function Model(){
 
     this.url = '';
 
-    this.phones = []; // { number:'', type: '' }
+    this.accounts = []; // { number:'', type: '' }
 
     //this._phones = [];
 
-    this.phoneStr = '';
+    this.accountStr = '';
     
 }
 

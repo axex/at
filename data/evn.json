@@ -3,7 +3,7 @@
     "id": "89892394234",
     "name": "TM1-DEV-XIA",
     "url": "http://service-tm1dev.lab.rcch.ringcentral.com",
-    "phones": [
+    "accounts": [
       {
         "number": "15878010100",
         "accountType": "TELUS Standard"
@@ -21,13 +21,13 @@
         "accountType": "RC Office"
       }
     ],
-    "phoneStr": "15878010100 TELUS Standard\n18664090010 ATT Standard\n18888460008 CA Office\n18776290009 RC Office"
+    "accountStr": "15878010100 TELUS Standard\n18664090010 ATT Standard\n18888460008 CA Office\n18776290009 RC Office"
   },
   {
     "id": "89892394235",
     "name": "TM2-DEV-XIA",
     "url": "http://service-tm2dev.lab.rcch.ringcentral.com",
-    "phones": [
+    "accounts": [
       {
         "number": "15875200190",
         "accountType": "TELUS"
@@ -45,6 +45,6 @@
         "accountType": "RC Office"
       }
     ],
-    "phoneStr": "15875200190 TELUS\n18776290008 ATT Standard\n18002960003 CA Office\n18664090011 RC Office"
+    "accountStr": "15875200190 TELUS\n18776290008 ATT Standard\n18002960003 CA Office\n18664090011 RC Office"
   }
 ]
