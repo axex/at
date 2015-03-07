@@ -13,6 +13,10 @@ function Model(){
 
     this.phones = []; // { number:'', type: '' }
 
-};
+    //this._phones = [];
+
+    this.phoneStr = '';
+    
+}
 
 module.exports = Model;

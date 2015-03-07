@@ -4,8 +4,7 @@
 var fs = require('fs-extra')
     , path = require('path')
     , dataPath = path.join(process.cwd(), 'data')
-    , jsonFilePath = path.join(dataPath, 'evn.json')
-    , envData = [];
+    , jsonFilePath = path.join(dataPath, 'evn.json');
 
 
 

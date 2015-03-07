@@ -22,6 +22,7 @@ describe("services.environment", function(){
             var savedResult = services.saveDetail({
                 name: 'test env'
                 , url: 'http://localhost:9901/login/login.asp'
+                , phoneStr: '15878010100 TELUS Standard\n18664090010 ATT Standard\n18888460008 CA Office\n18776290009 RC Office'
             });
             var length2 = services.getList().length;
             assert.equal(length1+1, length2);
@@ -30,6 +31,7 @@ describe("services.environment", function(){
 
         it('new data should be update', function(){
             var newData = services.getDetail(id);
+
             newData.name = 'new name';
 
             services.saveDetail(newData);
@@ -37,6 +39,12 @@ describe("services.environment", function(){
             var newData1 = services.getDetail(id);
 
             assert(newData.name , newData1.name);
+        });
+
+        it('phones should 4 records', function(){
+            var newData = services.getDetail(id);
+            assert.equal(newData.phones.length, 4);
+            assert.equal(newData.phones[3].number, '18776290009');
         });
 
 

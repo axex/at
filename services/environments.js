@@ -17,9 +17,17 @@ Environment.prototype.getList = function () {
 };
 
 Environment.prototype.getDetail = function(id) {
-    return this.getList().filter(function(item){
+    var detail = this.getList().filter(function(item){
         return item.id == id;
     })[0];
+
+    if(detail) {
+        detail.phoneStr = detail.phones.map(function(o){
+            return o.number + ' ' + o.accountType;
+        }).join('\r\n');
+    }
+
+    return detail;
 };
 
 Environment.prototype.remove = function(id) {
@@ -47,7 +55,23 @@ Environment.prototype.saveDetail = function(updateObj) {
         list.push(detail);
     }
 
-    extend(true, detail, updateObj);
+
+    updateObj.phones = [];
+    if(updateObj.phoneStr) {
+
+        updateObj.phoneStr.split('\n').forEach(function(line){
+            var numberReg = /\d+/;
+            var numberExec = numberReg.exec(line);
+            if(numberExec){
+                updateObj.phones.push({
+                    number: numberExec[0]
+                    , accountType: line.replace(numberExec,'')
+                });
+            }
+        });
+    }
+
+    extend( detail, updateObj);
 
     dataHelper.write(list);
 

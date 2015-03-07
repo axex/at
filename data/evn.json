@@ -20,7 +20,8 @@
         "number": "18776290009",
         "accountType": "RC Office"
       }
-    ]
+    ],
+    "phoneStr": "15878010100 TELUS Standard\n18664090010 ATT Standard\n18888460008 CA Office\n18776290009 RC Office"
   },
   {
     "id": "89892394235",
@@ -43,6 +44,7 @@
         "number": "18664090011",
         "accountType": "RC Office"
       }
-    ]
+    ],
+    "phoneStr": "15875200190 TELUS\n18776290008 ATT Standard\n18002960003 CA Office\n18664090011 RC Office"
   }
 ]
