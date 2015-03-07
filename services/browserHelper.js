@@ -6,7 +6,7 @@ var path = require('path');
 var util = require('util');
 
 var cwd = process.cwd();
-var url = path.join(cwd, "/statics/jump.html");
+var url = "http://localhost:7890/";
 
 module.exports = {
   ie: {
