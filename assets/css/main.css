@@ -1,3 +1,21 @@
 .hidden {
     display: none;
 }
+
+.wrap {
+    padding-top: 60px;
+}
+
+.panel {
+    position: relative;
+}
+
+.env-url {
+    color: #999;
+}
+
+.env-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

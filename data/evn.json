@@ -46,17 +46,5 @@
       }
     ],
     "accountStr": "15875200190 TELUS\n18776290008 ATT Standard\n18002960003 CA Office\n18664090011 RC Office"
-  },
-  {
-    "id": "1425712029898_611",
-    "name": "2",
-    "url": "2",
-    "accounts": [
-      {
-        "number": "2",
-        "type": ""
-      }
-    ],
-    "accountStr": "2"
   }
 ]

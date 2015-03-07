@@ -15,11 +15,25 @@
   </head>
   <body ng-controller="ATController">
     <div class="wrap">
-      <header></header>
+      <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Hello</a>
+            </div>
+            <form class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default btn-sm">Submit</button>
+            </form>
+            <button class="btn btn-default navbar-right navbar-btn btn-sm account-add-btn">Add</button>
+          </div>
+        </nav>
+      </header>
       <article>
-        <section class="header-utils text-right">
-          <button class="btn btn-primary account-add-btn">Add</button>
-          <div class="account-add hidden">
+        <section class="account-add-form hidden center-block">
+          <div class="account-add">
             <div class="account-add-name">
               <label for="">Environment Name:</label>
               <input type="text" placeholder="Enter environment name."/>
@@ -28,7 +42,7 @@
               <label for="">Environment Url:</label>
               <input type="text" placeholder="Enter environment url."/>
             </div>
-            <textarea class="account-add-accounts" name="" id="" cols="30" rows="10" placeholder="Enter account info here."></textarea>
+            <textarea class="account-add-accounts" name="" cols="30" rows="10" placeholder="Enter account info here."></textarea>
 
             <div class="edit-buttons">
               <button class="btn btn-primary account-add-save">Save</button> &nbsp;
@@ -36,24 +50,28 @@
             </div>
           </div>
         </section>
-        <section class="env">
+        <section class="env-list">
           <div class="panel-group" id="accordion">
 
             <div ng-repeat="env in environments">
               <div class="panel panel-default" id="{{env.id}}">
                 <div class="panel-heading">
                   <h4>
-                    <a ng-href="#collapse{{$index}}" data-toggle="collapse" data-target="#collapse{{$index}}" data-parent="#accordion">
+                    <a ng-href="#collapse{{$index}}" class="env-name" data-toggle="collapse" data-target="#collapse{{$index}}" data-parent="#accordion">
                       {{env.name}}
                     </a>
                   </h4>
                   <p class="env-url">{{env.url}}</p>
-                  <p>
-                    <a href="#" class="btn-edit">Edit</a> &nbsp;
-                    <a href="#" class="bnt-remove">Remove</a>
+                  <p class="env-actions">
+                    <button class="btn btn-edit">
+                      <i class="glyphicon glyphicon-edit"></i> Edit
+                    </button> &nbsp;
+                    <button class="bnt-remove">
+                      <i class="glyphicon glyphicon-remove"></i> Remove
+                    </button>
                   </p>
                 </div>
-                <div id="collapse{{$index}}" class="panel-collapse">
+                <div id="collapse{{$index}}" class="panel-collapse collapse">
                   <div class="panel-body">
                     <ul ng-repeat="account in env.accounts" class="account-list">
                       <li class="account-info">
@@ -75,7 +93,7 @@
                         <label for="">Environment Url:</label>
                         <input type="text" placeholder="Enter environment url."/>
                       </div>
-                      <textarea class="account-edit-accounts" name="" id="" cols="30" rows="10" placeholder="Enter account info here."></textarea>
+                      <textarea class="account-edit-accounts" name="" cols="30" rows="10" placeholder="Enter account info here."></textarea>
 
                       <div class="edit-buttons">
                         <button class="btn btn-primary btn-save">Save</button> &nbsp;

@@ -32,14 +32,9 @@ function startBrowser (event) {
 }
 
 $(document).ready(function () {
-  $('.btn-edit').on('click', function () {
-    var $panel = $(this).parents('.panel');
-    $panel.find('.account-edit').removeClass('hidden');
-    $panel.find('.account-list').addClass('hidden');
-  });
-
   $('.account-add-btn').on('click', function () {
-    $('.account-add').removeClass('hidden');
+    $('.account-add-form').removeClass('hidden');
+    $('.env-list').addClass('hidden');
   });
 
   $('.account-add-save').on('click', function () {
@@ -56,14 +51,22 @@ $(document).ready(function () {
   });
 
   $('.account-add-cancel').on('click', function () {
-    $('.account-add').addClass('hidden');
+    $('.account-add-form').addClass('hidden');
+    $('.env-list').removeClass('hidden');
   });
 
+  $('.btn-edit').on('click', function () {
+    var $panel = $(this).parents('.panel');
+    $panel.find('.account-edit').removeClass('hidden');
+    $panel.find('.account-list').addClass('hidden');
+    $panel.find('.env-name').trigger('click');
+  });
 
   $('.bnt-remove').on('click', function () {
     var $panel = $(this).parents('.panel');
     var id = $panel.attr('id');
     app.removeEnv(id);
+    $panel.find('.env-name').trigger('click');
   });
 
   $('.btn-save').on('click', function () {
