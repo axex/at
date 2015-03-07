@@ -1,12 +1,1 @@
-[
-  {
-    "name": "TM1-DEV-XIA"
-    , "url": "http://service-tm1dev.lab.rcch.ringcentral.com"
-    , "phones": [
-      { "number":"15878010100", "accountType": "TELUS Standard"}
-      , { "number":"18664090010", "accountType": "ATT Standard"}
-      , { "number":"18888460008", "accountType": "CA Office"}
-      , { "number":"18776290009", "accountType": "RC Office"}
-    ]
-  }
-]
+[]
