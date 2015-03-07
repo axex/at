@@ -26,9 +26,9 @@ Environment.prototype.remove = function(id) {
     var list = this.getList();
     var index = list.indexOf( this.getDetail(id) );
     if(index >= 0) {
-        list.slice(index,1);
+        list.splice(index,1);
     }
-    dataHelper.save();
+    dataHelper.write();
 };
 
 Environment.prototype.saveDetail = function(id, updateObj) {

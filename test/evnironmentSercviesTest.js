@@ -19,12 +19,20 @@ describe("services.environment", function(){
         var id;
         it('envList length should add 1', function(){
             var length1 = envList.length;
-            services.saveDetail(null, {
+            var savedResult = services.saveDetail(null, {
                 name: 'test env'
                 , url: 'http://localhost:9901/login/login.asp'
             });
             var length2 = envList.length;
             assert.equal(length1+1, length2);
-        })
+            id = savedResult.id;
+        });
+
+        it('new data should be remove', function(){
+            var length1 = envList.length;
+            services.remove(id);
+            var length2 = envList.length;
+            assert.equal(length1-1, length2);
+        });
     });
 })
