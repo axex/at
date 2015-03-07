@@ -1,8 +1,8 @@
 [
   {
     "id": "89892394234",
-    "name": "new name",
-    "url": "http://localhost:9901/login/login.asp",
+    "name": "TM1-DEV-XIA",
+    "url": "http://service-tm1dev.lab.rcch.ringcentral.com",
     "phones": [
       {
         "number": "15878010100",
@@ -18,6 +18,29 @@
       },
       {
         "number": "18776290009",
+        "accountType": "RC Office"
+      }
+    ]
+  },
+  {
+    "id": "89892394235",
+    "name": "TM2-DEV-XIA",
+    "url": "http://service-tm2dev.lab.rcch.ringcentral.com",
+    "phones": [
+      {
+        "number": "15875200190",
+        "accountType": "TELUS"
+      },
+      {
+        "number": "18776290008",
+        "accountType": "ATT Standard"
+      },
+      {
+        "number": "18002960003",
+        "accountType": "CA Office"
+      },
+      {
+        "number": "18664090011",
         "accountType": "RC Office"
       }
     ]
