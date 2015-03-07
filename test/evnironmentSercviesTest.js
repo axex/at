@@ -19,7 +19,7 @@ describe("services.environment", function(){
         var id;
         it('envList length should add 1', function(){
             var length1 = services.getList().length;
-            var savedResult = services.saveDetail({
+            var savedResult = services.save({
                 name: 'test env'
                 , url: 'http://localhost:9901/login/login.asp'
                 , accountStr: '15878010100 TELUS Standard\n18664090010 ATT Standard\n18888460008 CA Office\n18776290009 RC Office'
@@ -34,7 +34,7 @@ describe("services.environment", function(){
 
             newData.name = 'new name';
 
-            services.saveDetail(newData);
+            services.save(newData);
 
             var newData1 = services.getDetail(id);
 
