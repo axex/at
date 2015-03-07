@@ -3,11 +3,11 @@
  */
 
 var extend = require('extend');
-var dataHelper = require('./dateHelper');
+var dataHelper = require('./dataHelper');
 var envModel = require('../models/environment');
 
 function Environment() {
-    if(!(this instanceof  Evnironment)) {
+    if(!(this instanceof  Environment)) {
         return new Environment();
     }
 }

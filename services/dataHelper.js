@@ -7,7 +7,7 @@ var fs = require('fs-extra')
     , jsonFilePath = path.join(dataPath, 'evn.json')
     , envData = [];
 
-if(fs.existedSync(jsonFilePath)){
+if(fs.existsSync(jsonFilePath)){
     envData = fs.readJSONSync(jsonFilePath, 'utf8');
 }
 

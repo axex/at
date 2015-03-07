@@ -4,9 +4,13 @@
 var EnvServices = require('../services/environments');
 
 var services = new  EnvServices();
+var assert = require('assert');
 
-descripe("services.environment", function(){
+describe("services.environment", function(){
     describe("#getList", function(){
         var envList = services.getList();
+        it('list should be instance of array', function(){
+            assert.equal(true, envList instanceof  Array);
+        })
     });
 })
