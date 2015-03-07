@@ -2,14 +2,11 @@
  * Created by trump.wang on 2015/3/7.
  */
 global.$ = window.jQuery;
-var util = require('util');
-var events = require('events');
+var At = require('./services/at.js');
+var app = new At();
 
-function App(){
-    this.on('open-brower', function(){
+app.init();
 
-    });
-}
-
-util.inherits(App,  events.EventEmitter);
-
+$('.btn-start').on('click', function () {
+  app.startBrowse();
+});
