@@ -6,29 +6,22 @@
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link rel="stylesheet" href="assets/css/footer.css"/>
     <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="assets/vendors/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
 
     <script src="assets/vendors/jquery/dist/jquery.js"></script>
     <script src="assets/vendors/bootstrap/dist/js/bootstrap.js"></script>
     <script src="assets/vendors/angular/angular.min.js"></script>
   </head>
 
-  <body ng-controller="ATController">
+  <body ng-controller="ATController" data-spy="scroll" data-target=".sidebar">
     <div class="wrap">
 
       <header>
         <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container-fluid">
+          <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">AT</a>
+              <a class="navbar-brand" href="#">AT - Login with one-click!</a>
             </div>
-            <form class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default btn-sm">Submit</button>
-            </form>
-            <button class="btn btn-default navbar-right navbar-btn btn-sm account-add-btn">Add</button>
+            <button class="btn btn-info navbar-right navbar-btn btn-sm account-add-btn">Add an environment</button>
           </div>
         </nav>
       </header>
@@ -36,6 +29,11 @@
       <article class="container">
 
         <section class="account-add-form hidden center-block">
+
+          <div class="page-header">
+            <h1>Add an Environment:</h1>
+          </div>
+
           <div class="account-add form-horizontal">
 
             <div class="account-add-name form-group">
@@ -69,77 +67,94 @@
           </div>
         </section>
 
-        <section class="env-list">
-          <div class="panel-group" id="accordion">
+        <section class="env-list row">
 
+          <div class="col-sm-9">
             <div ng-repeat="env in environments">
-              <div class="panel panel-default" id="{{env.id}}">
-                <div class="panel-heading">
-                  <h4>
-                    <a ng-href="#collapse{{$index}}" class="env-name" data-toggle="collapse" data-target="#collapse{{$index}}" data-parent="#accordion">
-                      {{env.name}}
-                    </a>
-                  </h4>
-                  <p class="env-url">{{env.url}}</p>
-                  <p class="env-actions">
-                    <button class="btn btn-edit">
+              <div class="page-header" id="{{env.id}}">
+                <h1>{{env.name}}
+                  <small class="pull-right">
+                    <button class="btn btn-link">
                       <i class="glyphicon glyphicon-edit"></i> Edit
-                    </button> &nbsp;
-                    <button class="btn bnt-remove">
+                    </button>
+                    <button class="btn btn-link">
                       <i class="glyphicon glyphicon-remove"></i> Remove
                     </button>
-                  </p>
+                  </small>
+                  <p class="env-url">{{env.url}}</p>
+                </h1>
+              </div>
+
+              <table class="table table-striped">
+                <thead>
+                  <th>Account Number</th>
+                  <th>Account Type</th>
+                  <th>Open with</th>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="account in env.accounts">
+                    <td>{{account.number}}</td>
+                    <td>{{account.type}}</td>
+                    <td>
+                      <span ng-repeat="bs in browsers">
+                        <a href="#" ng-click="startBrowser($event)" class="label"
+                           ng-class="{'label-info': bs === 'ie', 'label-danger': bs === 'firefox', 'label-warning': bs === 'chrome', 'label-default': bs === 'safari'}">
+                          {{bs}}
+                        </a> &nbsp;
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="account-edit hidden form-horizontal">
+                <div class="account-edit-name form-group">
+                  <label for="" class="col-sm-3 control-label">Environment Name:</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Enter environment name." value="{{env.name}}">
+                  </div>
                 </div>
-                <div id="collapse{{$index}}" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <ul ng-repeat="account in env.accounts" class="account-list">
-                      <li class="account-info">
-                        <span class="account-number">{{account.number}}</span>
-                        -
-                        <span class="account-type">{{account.type}}</span>
 
-                        <span ng-repeat="bs in browsers">
-                          <a href="#" ng-click="startBrowser($event)">{{bs}}</a>
-                        </span>
-                      </li>
-                    </ul>
-                    <div class="account-edit hidden form-horizontal">
+                <div class="account-edit-url form-group">
+                  <label for="" class="col-sm-3 control-label">Environment Url:</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Enter environment url." value="{{env.url}}">
+                  </div>
+                </div>
 
-                      <div class="account-edit-name form-group">
-                        <label for="" class="col-sm-3 control-label">Environment Name:</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" placeholder="Enter environment name."/>
-                        </div>
-                      </div>
+                <div class="form-group">
+                  <label for="" class="col-sm-3 control-label">Environment accounts:</label>
+                  <div class="col-sm-8">
+                    <textarea class="account-edit-accounts form-control" rows="10" placeholder="Enter account info here.">
+                      {{env.accountStr}}
+                    </textarea>
+                  </div>
+                </div>
 
-                      <div class="account-edit-url form-group">
-                        <label for="" class="col-sm-3 control-label">Environment Url:</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" placeholder="Enter environment url.">
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Environment accounts:</label>
-                        <div class="col-sm-8">
-                          <textarea class="account-edit-accounts form-control" rows="10" placeholder="Enter account info here."></textarea>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <div class="edit-buttons col-sm-offset-3">
-                          <button class="btn btn-primary btn-save">Save</button> &nbsp;
-                          <button class="btn btn-danger">Cancel</button>
-                        </div>
-                      </div>
-
-                    </div>
+                <div class="form-group">
+                  <div class="edit-buttons col-sm-offset-3">
+                    <button class="btn btn-primary btn-save">Save</button> &nbsp;
+                    <button class="btn btn-danger">Cancel</button>
                   </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
+
+          <div class="col-sm-3 sidebar">
+
+            <form role="search">
+              <input type="text" class="form-control" placeholder="Search">
+            </form>
+
+            <ul class="nav">
+              <li ng-repeat="env in environments">
+                <a ng-href="#{{env.id}}">{{ env.name }}</a>
+              </li>
+            </ul>
+          </div>
+
         </section>
 
       </article>

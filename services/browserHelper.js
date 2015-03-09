@@ -18,9 +18,11 @@ module.exports = {
   firefox: {
     cmd: getStartCommand('firefox', url)
   },
+  /*
   opera: {
     cmd: getStartCommand('opera', url)
   },
+  */
   safari: {
     cmd: getStartCommand('safari', url)
   }

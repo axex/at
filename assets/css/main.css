@@ -1,3 +1,7 @@
+body {
+  position: relative;
+}
+
 .hidden {
     display: none;
 }
@@ -11,6 +15,7 @@
 }
 
 .env-url {
+    font-size: 14px;
     color: #999;
 }
 
@@ -18,4 +23,17 @@
     position: absolute;
     top: 10px;
     right: 10px;
+}
+
+.sidebar {
+  padding-top: 30px;
+}
+
+.sidebar a {
+  color: #585858;
+}
+
+.sidebar .active a {
+  font-weight: bold;
+  color: #337ab7;
 }
