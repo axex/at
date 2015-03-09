@@ -3,7 +3,7 @@
  */
 var fs = require('fs-extra')
     , path = require('path')
-    , dataPath = path.join(process.cwd(), 'data')
+    , dataPath = path.join('/at-login-helper', 'data')
     , jsonFilePath = path.join(dataPath, 'evn.json');
 
 
