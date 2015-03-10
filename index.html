@@ -16,7 +16,7 @@
     <div class="wrap">
 
       <header>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse">
           <div class="container">
             <div class="navbar-header">
               <a class="navbar-brand" href="#">AT</a>
@@ -80,15 +80,15 @@
         <section class="env-list row" ng-hide="isAddingEnv">
 
           <div class="col-sm-9">
-            <div ng-repeat="env in environments" ng-controller="EnvController">
+            <div ng-repeat="env in environments" class="environment" ng-controller="EnvController">
               <div class="page-header" id="{{env.id}}">
                 <h1>
                   {{env.name}}
                   <small class="pull-right">
-                    <button class="btn btn-link" ng-click="edit(env)">
+                    <button class="btn btn-default btn-xs" ng-click="edit(env)">
                       <i class="glyphicon glyphicon-edit"></i> Edit
                     </button>
-                    <button class="btn btn-link" ng-click="remove(env)">
+                    <button class="btn btn-default btn-xs" ng-click="remove(env)">
                       <i class="glyphicon glyphicon-remove"></i> Remove
                     </button>
                   </small>
@@ -103,7 +103,7 @@
                   <th>Open with</th>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="account in env.accounts">
+                  <tr ng-repeat="account in env.accounts" ng-controller="AccountController">
                     <td>{{account.number}}</td>
                     <td>{{account.type}}</td>
                     <td>
@@ -118,26 +118,25 @@
                 </tbody>
               </table>
 
-              <form class="ng-hide form-horizontal" ng-show="env.isEditing">
+              <form name="envEditForm" class="ng-hide form-horizontal" ng-show="env.isEditing">
                 <div class="account-edit-name form-group">
                   <label for="" class="col-sm-3 control-label">Environment Name:</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="Enter environment name." value="{{env.name}}">
+                    <input type="text" name="envName" class="form-control" placeholder="Enter environment name." ng-model="env.name">
                   </div>
                 </div>
 
                 <div class="account-edit-url form-group">
                   <label for="" class="col-sm-3 control-label">Environment Url:</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" placeholder="Enter environment url." value="{{env.url}}">
+                    <input type="text" name="envUrl" class="form-control" placeholder="Enter environment url." ng-model="env.url">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="" class="col-sm-3 control-label">Environment accounts:</label>
                   <div class="col-sm-8">
-                    <textarea class="account-edit-accounts form-control" rows="10" placeholder="Enter account info here.">
-                      {{env.accountStr}}
+                    <textarea name="envAccountStr" class="account-edit-accounts form-control" rows="10" placeholder="Enter account info here." ng-model="env.accountStr">
                     </textarea>
                   </div>
                 </div>
@@ -154,16 +153,21 @@
           </div>
 
           <div class="col-sm-3 sidebar">
+            <div class="affix" data-spy="affix">
+              <form role="search">
+                <input type="text" class="form-control" placeholder="Search">
+              </form>
 
-            <form role="search">
-              <input type="text" class="form-control" placeholder="Search">
-            </form>
-
-            <ul class="nav">
-              <li ng-repeat="env in environments">
-                <a ng-href="#{{env.id}}">{{ env.name }}</a>
-              </li>
-            </ul>
+              <h4>Environment List</h4>
+              <ul class="nav">
+                <li ng-repeat="env in environments">
+                  <a ng-href="#{{env.id}}">
+                    <i class="glyphicon glyphicon-menu-right"></i>
+                    {{ env.name }}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
         </section>

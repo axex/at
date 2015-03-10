@@ -21,8 +21,6 @@ angular.module('at', [])
         };
         $rootScope.isAddingEnv = true;
       };
-
-      $scope.startBrowser = startBrowser;
     }])
 
     .controller('EnvNewController', ['$scope', '$rootScope', function ($scope, $rootScope) {
@@ -48,39 +46,42 @@ angular.module('at', [])
     }])
 
     .controller('EnvController', ['$scope', function ($scope) {
-      $scope.edit = function (env) {
-        env.isEditing = true;
+      $scope.edit = function () {
+        $scope.env.isEditing = true;
+
+        $scope.envPristine = angular.copy($scope.env);
       };
 
-      $scope.cancel = function (env) {
-        env.isEditing = false;
+      $scope.cancel = function () {
+        $scope.env = $scope.envPristine;
+        $scope.env.isEditing = false;
       };
 
-      $scope.save = function (env) {
+      $scope.save = function () {
         app.updateEnv({
-          id: env.id,
-          name: env.name,
-          url: env.url,
-          accountStr: env.accountStr
+          id: $scope.env.id,
+          name: $scope.env.name,
+          url: $scope.env.url,
+          accountStr: $scope.env.accountStr
         });
 
         var index = 0;
         $scope.environments.forEach(function (e, i) {
-          if (e.id === env.id) {
+          if (e.id === $scope.env.id) {
             index = i;
           }
         });
-        $scope.environments[index] = env;
+        $scope.environments[index] = $scope.env;
 
-        env.isEditing = false;
+        $scope.env.isEditing = false;
       };
 
-      $scope.remove = function (env) {
-        app.removeEnv(env.id);
+      $scope.remove = function () {
+        app.removeEnv($scope.env.id);
 
         var index = 0;
         $scope.environments.forEach(function (e, i) {
-          if (e.id === env.id) {
+          if (e.id === $scope.env.id) {
             index = i;
           }
         });
@@ -88,22 +89,24 @@ angular.module('at', [])
       };
 
     }])
+
+    .controller('AccountController', ['$scope', function ($scope) {
+      $scope.startBrowser = function (event) {
+        event.preventDefault();
+        var $this = $(event.currentTarget);
+
+        var number = $scope.account.number;
+        var url = $scope.env.url;
+        var browser = $.trim( $this.text() );
+
+        app.startBrowse(browser, {
+          loginName: number,
+          password: 'Test!123',
+          action: url + '/login/main.asp'
+        });
+      };
+    }])
     ;
-
-function startBrowser (event) {
-  event.preventDefault();
-  var $this = $(event.currentTarget);
-
-  var number = $this.parents('li').find('.account-number').text();
-  var url = $this.parents('.panel').find('.env-url').text();
-  var browser = $this.text();
-
-  app.startBrowse(browser, {
-    loginName: number,
-    password: 'Test!123',
-    action: url + '/login/main.asp'
-  });
-}
 
 $(window).on('keyup', function(e){
   switch (e.keyCode){
