@@ -22,7 +22,7 @@
       var queryString = getParams();
 
       for (var key in queryString) {
-        $('#' + key).val( decodeURIComponent(queryString[key]) )
+        $('#' + key).val( decodeURIComponent(queryString[key]) );
       }
 
       $('#jumping-form')
