@@ -19,7 +19,8 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">AT - Login by just one-click!</a>
+              <a class="navbar-brand" href="#">AT</a>
+              <p class="navbar-text">Login by just one-click!</p>
             </div>
             <button class="btn navbar-right navbar-btn btn-sm"
                     ng-class="{'btn-info': !isAddingEnv, 'btn-success': isAddingEnv}"
@@ -87,7 +88,7 @@
                     <button class="btn btn-link" ng-click="edit(env)">
                       <i class="glyphicon glyphicon-edit"></i> Edit
                     </button>
-                    <button class="btn btn-link">
+                    <button class="btn btn-link" ng-click="remove(env)">
                       <i class="glyphicon glyphicon-remove"></i> Remove
                     </button>
                   </small>
@@ -144,7 +145,7 @@
                 <div class="form-group">
                   <div class="edit-buttons col-sm-offset-3">
                     <button class="btn btn-primary btn-save" ng-click="save(env)">Save</button> &nbsp;
-                    <button class="btn btn-danger" ng-click="cancelEdit(env)">Cancel</button>
+                    <button class="btn btn-danger" ng-click="cancel(env)">Cancel</button>
                   </div>
                 </div>
               </form>
