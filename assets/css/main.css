@@ -17,13 +17,26 @@ body {
 
 .page-header h1 {
   padding-top: 60px;
+  font-size: 28px;
 }
 
 .env-url {
+  margin-top: 5px;
     font-size: 14px;
     color: #999;
 }
 
+.env-action {
+  margin-bottom: 0;
+}
+
+.browser .label {
+  font-size: 100%;
+}
+
+
+/* Sidebar
+ * ----------------------------------------------------- */
 .sidebar {
   padding-top: 30px;
 }
@@ -34,13 +47,21 @@ body {
 
 .sidebar a {
   color: #585858;
+  font-size: 12px;
 }
 
 .sidebar .active a {
-  font-weight: bold;
-  color: #337ab7;
+  color: white;
+
 }
 
-.browser .label {
-  font-size: 100%;
+.sidebar a:hover,
+.sidebar .active a:hover,
+.sidebar .nav>li>a:hover {
+  background: none;
+  font-weight: normal;
+}
+
+.sidebar .nav>li>a {
+  padding: 0;
 }

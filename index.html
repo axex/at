@@ -80,14 +80,14 @@
 
         <section class="env-list row" ng-hide="isAddingEnv">
 
-          <div class="col-sm-9">
+          <div class="col-sm-8">
             <div ng-repeat="env in environments | filter : query"
             class="environment" ng-controller="EnvController">
               <div class="page-header" id="{{env.id}}">
                 <h1>
                   {{env.name}}
                   <p class="env-url">{{env.url}}</p>
-                  <p>
+                  <p class="env-action">
                     <button class="btn btn-info btn-xs" ng-click="edit(env)">
                       <i class="glyphicon glyphicon-edit"></i> Edit
                     </button>
@@ -110,7 +110,7 @@
                     <td>{{account.type}}</td>
                     <td>
                       <span class="browser" ng-repeat="bs in browsers">
-                        <a href="#" ng-click="startBrowser($event)" class="label"
+                        <a href="#" ng-click="startBrowser($event)" class="label" title="{{bs}}"
                            ng-class="{'label-info': bs === 'ie', 'label-danger': bs === 'firefox', 'label-warning': bs === 'chrome', 'label-default': bs === 'safari'}">
                           <i class="icon icon-{{bs}}"></i>
                         </a> &nbsp;
@@ -154,15 +154,15 @@
             </div>
           </div>
 
-          <div class="col-sm-3 sidebar">
+          <div class="col-sm-4 sidebar">
             <div class="affix" data-spy="affix">
               <form role="search">
                 <input type="text" autofocus class="form-control" placeholder="Search" ng-model="query">
               </form>
 
               <h4>Environment List</h4>
-              <ul class="nav">
-                <li ng-repeat="env in environments">
+              <ul class="nav list-group">
+                <li ng-repeat="env in environments" class="list-group-item">
                   <a ng-href="#{{env.id}}">
                     {{ env.name }}
                   </a>
