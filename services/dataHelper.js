@@ -3,10 +3,19 @@
  */
 var fs = require('fs-extra')
     , path = require('path')
-    , dataPath = path.join('/at-login-helper', 'data')
-    , jsonFilePath = path.join(dataPath, 'evn.json');
+    , atDataRoot = '/at-login-helper'
+    , dataPath = path.join(atDataRoot, 'data')
+    , configPath = path.join(atDataRoot, 'config.json')
+    , jsonFilePath = path.join(dataPath, 'evn.json')
+    , extend = require('extend');
 
+var config = require('../config.json');
 
+if(fs.existsSync(configPath)){
+    extend(true, config, fs.readJSONSync(configPath));
+}else{
+    fs.writeJSONSync(configPath, config)
+}
 
 fs.ensureDirSync( dataPath );
 
@@ -20,4 +29,5 @@ module.exports = {
         }
         return [];
     }
+    , config: config
 };

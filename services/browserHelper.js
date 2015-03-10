@@ -5,8 +5,10 @@
 var path = require('path');
 var util = require('util');
 
+var dataHelper = require('./dataHelper');
+var cfg = dataHelper.config;
 var cwd = process.cwd();
-var url = "http://localhost:7890/";
+var url = "http://localhost:"+cfg.port+"/";
 
 module.exports = {
   ie: {

@@ -16,6 +16,8 @@ function Model(){
     //this._phones = [];
 
     this.accountStr = '';
+
+    this.isAuto = false;
     
 }
 
