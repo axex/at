@@ -17,6 +17,7 @@ describe("services.environment", function(){
     describe('#saveData', function(){
         var envList = services.getList();
         var id;
+
         it('envList length should add 1', function(){
             var length1 = services.getList().length;
             var savedResult = services.save({
@@ -38,7 +39,7 @@ describe("services.environment", function(){
 
             var newData1 = services.getDetail(id);
 
-            assert(newData.name , newData1.name);
+            assert.equal(newData.name , newData1.name);
         });
 
         it('accounts should 4 records', function(){
@@ -46,7 +47,6 @@ describe("services.environment", function(){
             assert.equal(newData.accounts.length, 4);
             assert.equal(newData.accounts[3].number, '18776290009');
         });
-
 
         it('new data should be remove', function(){
             var length1 = services.getList().length;

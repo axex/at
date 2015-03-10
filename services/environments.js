@@ -45,10 +45,9 @@ Environment.prototype.remove = function(id, _list) {
 };
 
 Environment.prototype.save = function(updateObj) {
-    var detail = this.getDetail(updateObj.id)
+    var list = this.getList()
+        , detail = this.getDetail(updateObj.id, list)
         , hasData = !!detail;
-
-    var list = this.getList();
 
     if(!hasData){
         detail = new envModel();
