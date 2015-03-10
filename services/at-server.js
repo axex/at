@@ -9,14 +9,17 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
+var path = require('path');
+var cwd = process.cwd();
+
 var app = express();
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(multer()); // for parsing multipart/form-data
+app.use(express.static( path.join(cwd, '/assets')) );
 
 app.get('/', function(req, response){
-    var path = require('path');
-    var cwd = process.cwd();
+
     var url = path.join(cwd, "/statics/jump.html");
     var fs = require('fs');
     response.writeHead(200, {"Content-Type": "text/html"});
@@ -60,4 +63,4 @@ app.post('/env/update', function(req, res) {
     }
 });
 
-app.listen(cfg.port);
+app.listen(cfg.port, '0.0.0.0');
