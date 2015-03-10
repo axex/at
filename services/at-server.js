@@ -24,23 +24,39 @@ app.get('/', function(req, response){
 });
 
 app.post('/env/update', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     if( req.body ) {
         var envServices = new EnvService();
-        if( req.body.length ) {
+        if(  req.body.list &&  req.body.list.length ) {
             var list = envServices.getList();
             list && list.forEach(function(item){
                 if(item.isAuto) {
                     envServices.remove(item.id, list);
                 }
             });
+
             req.body.list.forEach(function(item ) {
                 item.isAuto = true;
+                item.name += (item.name&&'-') + getDateStr();
                 envServices.save(item);
             });
         }
-        res.send(req.body);
+        res.send(req.body );
     }else{
         res.send(false);
+    }
+
+    function getDateStr(date){
+        date = date || new Date();
+
+        return [
+            date.getFullYear()
+            , date.getMonth() + 1
+            , date.getDate()
+            , date.getHours()
+            , date.getMinutes()
+            , date.getSeconds()
+        ].join('-');
     }
 });
 
