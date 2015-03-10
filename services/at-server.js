@@ -19,10 +19,11 @@ app.use(multer()); // for parsing multipart/form-data
 app.use(express.static( path.join(cwd, '/assets')) );
 
 app.get('/', function(req, response){
-    var url = path.join(cwd, "/statics/jump.html");
-    var fs = require('fs');
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.end( fs.readFileSync(url) );
+    serverStatic(response, path.join(cwd, "/statics/jump.html"));
+});
+
+app.get('/dpw', function(req, res) {
+    serverStatic(res, path.join(cwd, "/statics/dpw.html"));
 });
 
 app.post('/env/update', function(req, res) {
@@ -54,3 +55,10 @@ app.post('/env/update', function(req, res) {
 });
 
 app.listen(cfg.port, '0.0.0.0');
+
+
+function serverStatic(response, filePath){
+    var fs = require('fs');
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.end( fs.readFileSync(filePath) );
+}

@@ -22,7 +22,13 @@
       var queryString = getParams();
 
       for (var key in queryString) {
-        $('#' + key).val( decodeURIComponent(queryString[key]) );
+          (function(key){
+              var $input = $('#' + key);
+              if($input.length === 0){
+                  $input = $('<input type="hidden"/>').attr('name', key).appendTo('#jumping-form');
+              }
+              $input.val( decodeURIComponent(queryString[key]) )
+          })(key);
       }
 
       $('#jumping-form')
