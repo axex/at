@@ -16,8 +16,8 @@ Environment.prototype.getList = function () {
     return dataHelper.read() || [];
 };
 
-Environment.prototype.getDetail = function(id) {
-    var detail = this.getList().filter(function(item){
+Environment.prototype.getDetail = function(id, _list) {
+    var detail = (_list || this.getList()).filter(function(item){
         return item.id == id;
     })[0];
 
@@ -30,8 +30,8 @@ Environment.prototype.getDetail = function(id) {
     return detail;
 };
 
-Environment.prototype.remove = function(id) {
-    var list = this.getList();
+Environment.prototype.remove = function(id, _list) {
+    var list = _list || this.getList();
     var index = -1;
     list.forEach(function(item, i){
         if(item.id == id){
@@ -53,6 +53,8 @@ Environment.prototype.save = function(updateObj) {
     if(!hasData){
         detail = new envModel();
         list.push(detail);
+    }else{
+        detail.isAuto = false;
     }
 
     updateObj.accounts = [];
