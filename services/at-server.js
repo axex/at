@@ -19,7 +19,6 @@ app.use(multer()); // for parsing multipart/form-data
 app.use(express.static( path.join(cwd, '/assets')) );
 
 app.get('/', function(req, response){
-
     var url = path.join(cwd, "/statics/jump.html");
     var fs = require('fs');
     response.writeHead(200, {"Content-Type": "text/html"});
@@ -44,7 +43,7 @@ app.post('/env/update', function(req, res) {
                 envServices.save(item);
             });
         }
-        res.send(req.body );
+        res.send(req.body);
     }else{
         res.send(false);
     }
