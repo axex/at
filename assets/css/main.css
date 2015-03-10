@@ -8,11 +8,15 @@ body {
 }
 
 .environment {
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
 .environment:first-child {
   margin-top: 0;
+}
+
+.page-header h1 {
+  padding-top: 60px;
 }
 
 .env-url {
@@ -35,4 +39,8 @@ body {
 .sidebar .active a {
   font-weight: bold;
   color: #337ab7;
+}
+
+.browser .label {
+  font-size: 100%;
 }

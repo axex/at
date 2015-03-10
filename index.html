@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>AT - Login Helper</title>
     <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/font-browser.css"/>
     <link rel="stylesheet" href="assets/css/footer.css"/>
     <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -16,7 +17,7 @@
     <div class="wrap">
 
       <header>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
               <a class="navbar-brand" href="#">AT</a>
@@ -85,15 +86,15 @@
               <div class="page-header" id="{{env.id}}">
                 <h1>
                   {{env.name}}
-                  <small class="pull-right">
-                    <button class="btn btn-default btn-xs" ng-click="edit(env)">
+                  <p class="env-url">{{env.url}}</p>
+                  <p>
+                    <button class="btn btn-info btn-xs" ng-click="edit(env)">
                       <i class="glyphicon glyphicon-edit"></i> Edit
                     </button>
-                    <button class="btn btn-default btn-xs" ng-click="remove(env)">
+                    <button class="btn btn-danger btn-xs" ng-click="remove(env)">
                       <i class="glyphicon glyphicon-remove"></i> Remove
                     </button>
-                  </small>
-                  <p class="env-url">{{env.url}}</p>
+                  </p>
                 </h1>
               </div>
 
@@ -108,10 +109,10 @@
                     <td>{{account.number}}</td>
                     <td>{{account.type}}</td>
                     <td>
-                      <span ng-repeat="bs in browsers">
+                      <span class="browser" ng-repeat="bs in browsers">
                         <a href="#" ng-click="startBrowser($event)" class="label"
                            ng-class="{'label-info': bs === 'ie', 'label-danger': bs === 'firefox', 'label-warning': bs === 'chrome', 'label-default': bs === 'safari'}">
-                          {{bs}}
+                          <i class="icon icon-{{bs}}"></i>
                         </a> &nbsp;
                       </span>
                     </td>
@@ -156,14 +157,13 @@
           <div class="col-sm-3 sidebar">
             <div class="affix" data-spy="affix">
               <form role="search">
-                <input type="text" class="form-control" placeholder="Search" ng-model="query">
+                <input type="text" autofocus class="form-control" placeholder="Search" ng-model="query">
               </form>
 
               <h4>Environment List</h4>
               <ul class="nav">
                 <li ng-repeat="env in environments">
                   <a ng-href="#{{env.id}}">
-                    <i class="glyphicon glyphicon-menu-right"></i>
                     {{ env.name }}
                   </a>
                 </li>
