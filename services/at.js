@@ -73,7 +73,6 @@ At.prototype.removeEnv = function (id) {
 At.prototype.startBrowse = function (browser, params) {
   browser = browser || "ie";
   console.log('Starting browser [%s]...', browser);
-  debugger;
 
   this.emit(this.events.openBrowser, browser, params);
 };
