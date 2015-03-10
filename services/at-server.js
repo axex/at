@@ -39,26 +39,17 @@ app.post('/env/update', function(req, res) {
 
             req.body.list.forEach(function(item ) {
                 item.isAuto = true;
-                item.name += (item.name&&'-') + getDateStr();
-                envServices.save(item);
+                if (item.accountStr.trim().length > 0) {
+                  envServices.save(item);
+                }
             });
+
+            atEmitter.emit('dataSource.change');
         }
+
         res.send(req.body);
     }else{
         res.send(false);
-    }
-
-    function getDateStr(date){
-        date = date || new Date();
-
-        return [
-            date.getFullYear()
-            , date.getMonth() + 1
-            , date.getDate()
-            , date.getHours()
-            , date.getMinutes()
-            , date.getSeconds()
-        ].join('-');
     }
 });
 

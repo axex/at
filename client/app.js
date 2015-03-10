@@ -1,7 +1,12 @@
 /**
  * Created by trump.wang on 2015/3/7.
  */
+
+ var EventEmitter = require('events').EventEmitter;
+
 global.$ = window.jQuery;
+global.atEmitter = window.atEmitter = new EventEmitter();
+
 var At = require('./services/at.js');
 
 var app = new At();
@@ -21,6 +26,13 @@ angular.module('at', [])
         };
         $rootScope.isAddingEnv = true;
       };
+
+      atEmitter.on('dataSource.change', function () {
+        $scope.$apply(function () {
+          $scope.environments = app.getEnv();
+        });
+      });
+
     }])
 
     .controller('EnvNewController', ['$scope', '$rootScope', function ($scope, $rootScope) {
