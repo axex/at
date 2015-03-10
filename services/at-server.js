@@ -3,14 +3,16 @@
  */
 var dataHelper = require('./dataHelper');
 var cfg = dataHelper.config;
-
-
+var EnvService = require('./environments');
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var multer = require('multer');
+
 var app = express();
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(multer()); // for parsing multipart/form-data
 
 app.get('/', function(req, response){
     var path = require('path');
@@ -21,13 +23,22 @@ app.get('/', function(req, response){
     response.end( fs.readFileSync(url) );
 });
 
-app.post('/env/update', function(req, res){
+app.post('/env/update', function(req, res) {
     if( req.body ) {
-        if(req.body.list && req.body.list.length) {
-
+        var envServices = new EnvService();
+        if( req.body.length ) {
+            var list = envServices.getList();
+            list && list.forEach(function(item){
+                if(item.isAuto) {
+                    envServices.remove(item.id, list);
+                }
+            });
+            req.body.list.forEach(function(item ) {
+                item.isAuto = true;
+                envServices.save(item);
+            });
         }
-
-        res.send(true);
+        res.send(req.body);
     }else{
         res.send(false);
     }
