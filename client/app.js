@@ -14,6 +14,18 @@ app.init();
 
 
 angular.module('at', [])
+    .filter('accountFilter', function () {
+      return function (accounts, query) {
+        if (!/^\d+$/.test(query)) {
+          return accounts;
+        }
+
+        return accounts.filter(function (account) {
+          return account.number.indexOf(query) >= 0;
+        });
+      };
+    })
+
     .controller('ATController', ['$scope', '$rootScope', function ($scope, $rootScope) {
       $scope.environments = app.getEnv();
       $scope.browsers = app.getBrowsers();
@@ -109,7 +121,7 @@ angular.module('at', [])
 
         var number = $scope.account.number;
         var url = $scope.env.url;
-        var browser = $.trim( $this.text() );
+        var browser = $.trim( $this.attr('title') );
 
         app.startBrowse(browser, {
           loginName: number,

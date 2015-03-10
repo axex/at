@@ -105,7 +105,7 @@
                   <th>Open with</th>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="account in env.accounts | filter : query" ng-controller="AccountController">
+                  <tr ng-repeat="account in env.accounts | accountFilter : query" ng-controller="AccountController">
                     <td>{{account.number}}</td>
                     <td>{{account.type}}</td>
                     <td>
