@@ -9,12 +9,63 @@ app.init();
 
 
 angular.module('at', [])
-    .controller('ATController', ['$scope', function ($scope) {
+    .controller('ATController', ['$scope', '$rootScope', function ($scope, $rootScope) {
       $scope.environments = app.getEnv();
       $scope.browsers = app.getBrowsers();
 
+      $scope.addEnv = function () {
+        $rootScope.newEnv = {
+          name: '',
+          url: '',
+          accountStr: ''
+        };
+        $rootScope.isAddingEnv = true;
+      };
+
       $scope.startBrowser = startBrowser;
-    }]);
+    }])
+
+    .controller('EnvNewController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+      $scope.cancel = function () {
+        $rootScope.newEnv = {};
+        $rootScope.isAddingEnv = false;
+      };
+
+      $scope.save = function () {
+        var newEnv = $rootScope.newEnv;
+        $rootScope.newEnv = {};
+
+        app.addEnv({
+          name: newEnv.name,
+          url: newEnv.url,
+          accountStr: newEnv.accountStr
+        });
+
+        $scope.environments.unshift(newEnv);
+
+        $rootScope.isAddingEnv = false;
+      };
+    }])
+
+    .controller('EnvController', ['$scope', function ($scope) {
+      $scope.edit = function (env) {
+        env.isEditing = true;
+      };
+
+      $scope.cancelEdit = function (env) {
+        env.isEditing = false;
+      };
+
+      $scope.save = function (env) {
+        app.updateEnv({
+          id: id,
+          name: envName,
+          url: envUrl,
+          accountStr: accounts
+        });
+      };
+    }])
+    ;
 
 function startBrowser (event) {
   event.preventDefault();
@@ -32,29 +83,6 @@ function startBrowser (event) {
 }
 
 $(document).ready(function () {
-  $('.account-add-btn').on('click', function () {
-    $('.account-add-form').removeClass('hidden');
-    $('.env-list').addClass('hidden');
-  });
-
-  $('.account-add-save').on('click', function () {
-    var $accountAddForm = $(this).parents('.account-add');
-    var envName = $accountAddForm.find('.account-add-name input').val();
-    var envUrl = $accountAddForm.find('.account-add-url input').val();
-    var accounts = $accountAddForm.find('.account-add-accounts').val();
-
-    app.addEnv({
-      name: envName,
-      url: envUrl,
-      accountStr: accounts
-    });
-  });
-
-  $('.account-add-cancel').on('click', function () {
-    $('.account-add-form').addClass('hidden');
-    $('.env-list').removeClass('hidden');
-  });
-
   $('.btn-edit').on('click', function () {
     var $panel = $(this).parents('.panel');
     $panel.find('.account-edit').removeClass('hidden');
@@ -81,7 +109,7 @@ $(document).ready(function () {
       name: envName,
       url: envUrl,
       accountStr: accounts
-    })
+    });
   });
 
   $('.btn-danger').on('click', function () {
@@ -89,15 +117,15 @@ $(document).ready(function () {
     $panel.find('.account-list').removeClass('hidden');
     $panel.find('.account-edit').addClass('hidden');
   });
+});
 
-  $(window).on('keyup', function(e){
-    switch (e.keyCode){
-      case 123:
-            require('nw.gui').Window.get().showDevTools();
-            break;
-      case 116:
-            document.location.reload(true);
-            break
-    }
-  })
+$(window).on('keyup', function(e){
+  switch (e.keyCode){
+    case 123:
+          require('nw.gui').Window.get().showDevTools();
+          break;
+    case 116:
+          document.location.reload(true);
+          break;
+  }
 });
