@@ -59,7 +59,6 @@ Environment.prototype.save = function(updateObj) {
 
     updateObj.accounts = [];
     if(updateObj.accountStr) {
-
         updateObj.accountStr.split('\n').forEach(function(line){
             var numberReg = /\d+[\s|\d]*\d+/;
             var numberExec = numberReg.exec(line);
@@ -74,9 +73,12 @@ Environment.prototype.save = function(updateObj) {
 
     extend( detail, updateObj);
 
-    dataHelper.write(list);
+    if (updateObj.accounts.length > 0 && updateObj.url) {
+      dataHelper.write(list);
+      return detail;
+    }
 
-    return detail;
+    return false;
 };
 
 module.exports =  Environment;
