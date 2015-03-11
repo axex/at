@@ -65,6 +65,11 @@ body {
   font-size: 100%;
 }
 
+.env-list .table-striped .selected {
+  color: white;
+  background: #337ab7;
+}
+
 
 /* Sidebar
  * ----------------------------------------------------- */

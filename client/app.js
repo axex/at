@@ -139,6 +139,14 @@ angular.module('at', [])
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
+
+  var $envTableBody = $('.env-list tbody');
+
+  $envTableBody.find('tr').on('click', function () {
+    $envTableBody.find('.selected').removeClass('selected');
+    $(this).addClass('selected');
+  });
+
 });
 
 $(window).on('keyup', function(e){
