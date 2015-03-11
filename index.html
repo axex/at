@@ -192,7 +192,7 @@
 
               <h4>Environment List</h4>
               <ul class="nav list-group">
-                <li ng-repeat="env in environments" class="list-group-item">
+                <li ng-repeat="env in environments | filter : query" class="list-group-item">
                   <a ng-href="#{{env.id}}">
                     {{ env.name }}
                   </a>
