@@ -82,23 +82,24 @@ angular.module('at', [])
       };
 
       $scope.save = function () {
-        app.updateEnv({
+        var envUpdated = app.updateEnv({
           id: $scope.env.id,
           name: $scope.env.name,
           url: $scope.env.url,
           accountStr: $scope.env.accountStr
         });
 
-        var index = 0;
-        $scope.environments.forEach(function (e, i) {
-          if (e.id === $scope.env.id) {
-            index = i;
-          }
-        });
-        $scope.environments[index] = $scope.env;
-
-        $scope.env.isAuto = false;
-        $scope.env.isEditing = false;
+        if (envUpdated) {
+          var index = 0;
+          $scope.environments.forEach(function (e, i) {
+            if (e.id === envUpdated.id) {
+              index = i;
+            }
+          });
+          $scope.environments[index] = envUpdated;
+        } else {
+          console.log('Update env failed');
+        }
       };
 
       $scope.remove = function () {

@@ -54,17 +54,17 @@ At.prototype.getEnv = function () {
 
 At.prototype.addEnv = function (params) {
   console.log(params);
-  env.save(params);
+  return env.save(params);
 };
 
 At.prototype.updateEnv = function (params) {
   console.log(params);
-  env.save(params);
+  return env.save(params);
 };
 
 At.prototype.removeEnv = function (id) {
   if (!id) return;
-  env.remove(id);
+  return env.remove(id);
 };
 
 /**
