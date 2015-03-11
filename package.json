@@ -16,5 +16,15 @@
     "toolbar": false,
     "width": 850,
     "height": 600
-  }
+  },
+  "maintainers": [
+    {
+      "name": "Trump Wang",
+      "email": "trump.wang@ringcentral.com"
+    },
+    {
+      "name": "Vincent Cai",
+      "email": "vincent.cai@ringcentral.com"
+    }
+  ]
 }
