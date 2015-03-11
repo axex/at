@@ -18,7 +18,9 @@ function Model(){
     this.accountStr = '';
 
     this.isAuto = false;
-    
+
+    this.type = 'sw';
+
 }
 
 module.exports = Model;
