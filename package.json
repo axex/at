@@ -13,7 +13,7 @@
     "test": "mocha test"
   },
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "width": 800,
     "height": 600
   }
