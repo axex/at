@@ -97,6 +97,7 @@ angular.module('at', [])
         });
         $scope.environments[index] = $scope.env;
 
+        $scope.env.isAuto = false;
         $scope.env.isEditing = false;
       };
 
@@ -134,6 +135,10 @@ angular.module('at', [])
       };
     }])
     ;
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
 $(window).on('keyup', function(e){
   switch (e.keyCode){

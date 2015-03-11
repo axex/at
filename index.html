@@ -27,6 +27,7 @@
             <button class="btn navbar-right navbar-btn btn-sm"
                     ng-class="{'btn-info': !isAddingEnv, 'btn-success': isAddingEnv}"
                     ng-click="addEnv()">
+                    <i class="glyphicon glyphicon-plus"></i>
               {{ isAddingEnv ? 'Adding' : 'Add an environment' }}
             </button>
           </div>
@@ -87,7 +88,18 @@
               <div class="page-header" id="{{env.id}}">
                 <h1>
                   {{env.name}}
-                  <p class="env-url">{{env.url}}</p>
+                  <p class="env-url">
+                    {{env.url}}
+                    <span class="env-from">
+                      &nbsp;
+                      <i class="glyphicon glyphicon-share"
+                         data-toggle="tooltip" data-placement="bottom" title="Imported from Wiki Page"
+                         ng-if="env.isAuto"></i>
+                      <i class="glyphicon glyphicon-edit"
+                         data-toggle="tooltip" data-placement="bottom" title="Edited Manually"
+                         ng-if="!env.isAuto"></i>
+                    </span>
+                  </p>
                   <p class="env-action">
                     <button class="btn btn-info btn-xs" ng-click="edit(env)">
                       <i class="glyphicon glyphicon-edit"></i> Edit

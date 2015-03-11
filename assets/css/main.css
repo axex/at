@@ -32,6 +32,10 @@ body {
     color: #999;
 }
 
+.env-from i {
+  font-size: 12px;
+}
+
 .env-action {
   margin-bottom: 0;
 }
