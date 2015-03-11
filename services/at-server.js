@@ -23,6 +23,7 @@ app.get('/', function(req, response){
 });
 
 app.get('/dpw', function(req, res) {
+  debugger;
     serverStatic(res, path.join(cwd, "/statics/dpw.html"));
 });
 

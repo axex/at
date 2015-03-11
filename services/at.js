@@ -35,8 +35,12 @@ At.prototype.onOpenBrowser = function () {
         paramsArr.push(p + '=' + encodeURIComponent(params[p]));
       }
     }
-    cmd += '#' + paramsArr.join(';');
+
+    type = params.type || '';
+    cmd += type + '#' + paramsArr.join(';');
+
     console.log('Executing %s', cmd);
+
     exec(cmd);
   });
 };
@@ -50,6 +54,10 @@ At.prototype.init = function () {
 
 At.prototype.getEnv = function () {
   return env.getList();
+};
+
+At.prototype.getEnvTypes = function () {
+  return env.getTypes();
 };
 
 At.prototype.addEnv = function (params) {

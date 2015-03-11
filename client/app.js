@@ -28,11 +28,13 @@ angular.module('at', [])
 
     .controller('ATController', ['$scope', '$rootScope', function ($scope, $rootScope) {
       $scope.environments = app.getEnv();
+      $scope.environmentTypes = app.getEnvTypes();
       $scope.browsers = app.getBrowsers();
 
       $scope.addEnv = function () {
         $rootScope.newEnv = {
           name: '',
+          type: 'sw',
           url: '',
           accountStr: ''
         };
@@ -84,6 +86,7 @@ angular.module('at', [])
       $scope.save = function () {
         var envUpdated = app.updateEnv({
           id: $scope.env.id,
+          type: $scope.env.type,
           name: $scope.env.name,
           url: $scope.env.url,
           accountStr: $scope.env.accountStr
@@ -125,14 +128,32 @@ angular.module('at', [])
         var $this = $(event.currentTarget);
 
         var number = $scope.account.number;
+        var type = $scope.env.type;
         var url = $scope.env.url;
         var browser = $.trim( $this.attr('title') );
+        var params;
 
-        app.startBrowse(browser, {
-          loginName: number,
-          password: 'Test!123',
-          action: url + '/login/main.asp'
-        });
+        switch (type) {
+          case 'sw':
+            params = {
+              loginName: number,
+              password: 'Test!123',
+              action: url + '/login/main.asp'
+            };
+            break;
+          case 'dpw':
+            params = {
+              type: type,
+              user: number,
+              password: 'Test!123',
+              action: url + '/api/login',
+              redirectTo: url
+            };
+            break;
+        }
+
+        app.startBrowse(browser, params);
+
       };
     }])
     ;

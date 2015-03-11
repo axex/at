@@ -11,9 +11,11 @@
 <script src="/js/proxy.js"></script>
 <script>
     $(function(){
+      debugger;
         $('#post-man').attr('src', '/'+ document.location.hash);
         setTimeout(function(){
-            document.location.href = getParams().redirectTo;
+          debugger;
+            document.location.href = getParams().redirectto;
         },3000);
     });
 </script>

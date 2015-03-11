@@ -21,6 +21,10 @@
     $(document).ready(function () {
       var queryString = getParams();
 
+      if (queryString.type === 'dpw') {
+        $('#jumping-form input').remove();
+      }
+
       for (var key in queryString) {
           (function(key){
               var $input = $('#' + key);

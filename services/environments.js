@@ -12,6 +12,19 @@ function Environment() {
     }
 }
 
+Environment.prototype.getTypes = function () {
+  return [
+    {
+      name: 'Service Web',
+      value: 'sw'
+    },
+    {
+      name: 'DPW',
+      value: 'dpw'
+    }
+  ];
+};
+
 Environment.prototype.getList = function () {
     return dataHelper.read() || [];
 };
@@ -70,6 +83,7 @@ Environment.prototype.save = function(updateObj) {
         });
     }
 
+    debugger;
     extend( detail, updateObj);
 
     if (updateObj.accounts.length > 0 && updateObj.url) {
