@@ -83,7 +83,8 @@
         <section class="env-list row" ng-hide="isAddingEnv">
 
           <div class="col-sm-8">
-            <div ng-repeat="env in environments | filter : query"
+            <p class="bg-warning env-no-results" ng-hide="filtedEnvs.length"> No results found. </p>
+            <div ng-repeat="env in filtedEnvs = (environments | filter : query)"
             class="environment" ng-controller="EnvController">
               <div class="page-header" id="{{env.id}}">
                 <h1>
@@ -187,7 +188,7 @@
           <div class="col-sm-4 sidebar">
             <div class="affix" data-spy="affix">
               <form role="search">
-                <input type="text" autofocus class="form-control" placeholder="Search" ng-model="query">
+                <input type="text" autofocus class="form-control" placeholder="Search Environment or Account" ng-model="query">
               </form>
 
               <h4>Environment List</h4>
