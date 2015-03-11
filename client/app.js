@@ -140,10 +140,10 @@ angular.module('at', [])
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 
-  var $envTableBody = $('.env-list tbody');
+  var $envList = $('.env-list');
 
-  $envTableBody.find('tr').on('click', function () {
-    $envTableBody.find('.selected').removeClass('selected');
+  $envList.on('click', 'tbody tr', function () {
+    $envList.find('.selected').removeClass('selected');
     $(this).addClass('selected');
   });
 
