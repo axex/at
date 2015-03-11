@@ -6,9 +6,10 @@ var path = require('path');
 var util = require('util');
 
 var dataHelper = require('./dataHelper');
+var platform = require('./platform');
 var cfg = dataHelper.config;
 var cwd = process.cwd();
-var url = "http://localhost:"+cfg.port+"/";
+var url = 'http://localhost:' + cfg.port + '/';
 
 module.exports = {
   ie: {
@@ -31,5 +32,12 @@ module.exports = {
 };
 
 function getStartCommand (browser, url) {
-  return util.format("start %s %s", browser, url);
+  var command = platform.isWindows() ? 'start' : (platform.isMacOSX() ? 'open -a' : '');
+
+  if (!command) {
+    atEmitter.emit('platform.unsupport');
+    return;
+  }
+
+  return [command, browser, url].join(' ');
 }
