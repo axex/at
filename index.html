@@ -92,7 +92,7 @@
                     <button class="btn btn-info btn-xs" ng-click="edit(env)">
                       <i class="glyphicon glyphicon-edit"></i> Edit
                     </button>
-                    <button class="btn btn-danger btn-xs" ng-click="remove(env)">
+                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#removeConfirmModal-{{env.id}}">
                       <i class="glyphicon glyphicon-remove"></i> Remove
                     </button>
                   </p>
@@ -152,6 +152,23 @@
                 </div>
               </form>
 
+              <div id="removeConfirmModal-{{env.id}}" role="dialog" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Delete Confirmation</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Are you sure to delete environment:</p>
+                      <p>  <strong class="label label-primary">{{env.name}}</strong></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <button class="btn btn-danger" ng-click="remove(env)">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

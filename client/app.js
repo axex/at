@@ -101,6 +101,9 @@ angular.module('at', [])
       };
 
       $scope.remove = function () {
+        $('#removeConfirmModal-' + $scope.env.id).modal('hide');
+        $(document.body).removeClass('modal-open');
+
         app.removeEnv($scope.env.id);
 
         var index = 0;
