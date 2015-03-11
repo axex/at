@@ -80,7 +80,12 @@ body {
   margin-top: 30px;
 }
 
-.sidebar a {
+.sidebar .list-group-item {
+  padding: 0;
+}
+
+.sidebar .list-group-item a {
+  padding: 5px 15px;
   color: #585858;
   font-size: 12px;
 }
@@ -95,8 +100,4 @@ body {
 .sidebar .nav>li>a:hover {
   background: none;
   font-weight: normal;
-}
-
-.sidebar .nav>li>a {
-  padding: 0;
 }
