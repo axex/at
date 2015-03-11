@@ -1,1 +1,1 @@
-rm -rf build & nwbuild ./
+rm -rf ./build & nwbuild ./
