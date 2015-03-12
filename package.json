@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "main": "app/index.html",
   "window": {
-
     "width": 850,
     "height": 635
   },
@@ -26,5 +25,8 @@
     "extend": "^2.0.0",
     "fs-extra": "^0.16.4",
     "multer": "^0.1.8"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11"
   }
 }
