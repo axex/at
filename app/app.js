@@ -132,12 +132,12 @@ angular.module('at', [])
         $scope.environments.splice(index, 1);
       };
 
-      $scope.onFromMouseover = function (event) {
+      $scope.showTooltip = function (event) {
         var $this = $(event.currentTarget);
         $this.tooltip('show');
       };
 
-      $scope.onFromMouseout = function (event) {
+      $scope.hideTooltip = function (event) {
         var $this = $(event.currentTarget);
         $this.tooltip('hide');
       };
@@ -152,7 +152,7 @@ angular.module('at', [])
         var number = $scope.account.number;
         var type = $scope.env.type;
         var url = $scope.env.url;
-        var browser = $.trim( $this.attr('title') );
+        var browser = $.trim( $this.attr('name') );
         var params;
 
         switch (type) {

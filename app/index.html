@@ -106,10 +106,10 @@
                       &nbsp;
                       <i class="glyphicon glyphicon-share"
                          data-toggle="tooltip" data-placement="bottom" title="Imported from Wiki Page"
-                         ng-if="env.isAuto" ng-mouseover="onFromMouseover($event)" ng-mouseout="onFromMouseout($event)"></i>
+                         ng-if="env.isAuto" ng-mouseover="showTooltip($event)" ng-mouseout="hideTooltip($event)"></i>
                       <i class="glyphicon glyphicon-edit"
                          data-toggle="tooltip" data-placement="bottom" title="Edited Manually"
-                         ng-if="!env.isAuto" ng-mouseover="onFromMouseover($event)" ng-mouseout="onFromMouseout($event)" ></i>
+                         ng-if="!env.isAuto" ng-mouseenter="showTooltip($event)" ng-mouseleave="hideTooltip($event)" ></i>
                     </span>
                   </p>
                   <p class="env-action">
@@ -135,7 +135,9 @@
                     <td>{{account.type}}</td>
                     <td>
                       <span class="browser" ng-repeat="bs in browsers">
-                        <a href="#" ng-click="startBrowser($event)" class="label" title="{{bs}}"
+                        <a href="#" ng-click="startBrowser($event)" class="label" data-name="{{bs}}"
+                           data-toggle="tooltip" title="Open with - {{bs}}"
+                           ng-mouseenter="showTooltip($event)" ng-mouseleave="hideTooltip($event);"
                            ng-class="{'label-info': bs === 'ie', 'label-danger': bs === 'firefox', 'label-warning': bs === 'chrome', 'label-default': bs === 'safari'}">
                           <i class="icon icon-{{bs}}"></i>
                         </a> &nbsp;
