@@ -22,6 +22,22 @@ angular.module('at', [])
       };
     })
 
+    .filter('envTypeName', function () {
+      return function (typeValue) {
+        var types = app.getEnvTypes();
+        var name;
+
+        types.forEach(function (t) {
+          if (t.value === typeValue) {
+            name = t.name;
+            return;
+          }
+        });
+
+        return name || 'Unknown';
+      };
+    })
+
     .controller('ATController', ['$scope', '$rootScope', function ($scope, $rootScope) {
       $scope.environments = app.getEnv();
       $scope.environmentTypes = app.getEnvTypes();
@@ -116,6 +132,16 @@ angular.module('at', [])
         $scope.environments.splice(index, 1);
       };
 
+      $scope.onFromMouseover = function (event) {
+        var $this = $(event.currentTarget);
+        $this.tooltip('show');
+      };
+
+      $scope.onFromMouseout = function (event) {
+        var $this = $(event.currentTarget);
+        $this.tooltip('hide');
+      };
+
     }])
 
     .controller('AccountController', ['$scope', function ($scope) {
@@ -155,10 +181,8 @@ angular.module('at', [])
     ;
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip();
 
   var $envList = $('.env-list');
-
   $envList.on('click', 'tbody tr', function () {
     $envList.find('.selected').removeClass('selected');
     $(this).addClass('selected');

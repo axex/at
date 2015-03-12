@@ -55,7 +55,7 @@
             <div class="form-group">
               <label for="" class="col-sm-3 control-label">Environment Type:</label>
               <div class="col-sm-8">
-                <select name="envType" ng-options="type.value as type.name for type in environmentTypes" ng-model="newEnv.type">
+                <select name="envType" class="form-control" ng-options="type.value as type.name for type in environmentTypes" ng-model="newEnv.type">
                 </select>
               </div>
             </div>
@@ -99,15 +99,17 @@
                   {{env.name}}
                   <p class="env-meta">
                     <span class="env-url">{{env.url}}</span>
-                    <span class="env-type">{{env.type}}</span>
+                    &nbsp;
+                    <span class="env-type label label-default">{{env.type | envTypeName}}</span>
+                    &nbsp;
                     <span class="env-from">
                       &nbsp;
                       <i class="glyphicon glyphicon-share"
                          data-toggle="tooltip" data-placement="bottom" title="Imported from Wiki Page"
-                         ng-if="env.isAuto"></i>
+                         ng-if="env.isAuto" ng-mouseover="onFromMouseover($event)" ng-mouseout="onFromMouseout($event)"></i>
                       <i class="glyphicon glyphicon-edit"
                          data-toggle="tooltip" data-placement="bottom" title="Edited Manually"
-                         ng-if="!env.isAuto"></i>
+                         ng-if="!env.isAuto" ng-mouseover="onFromMouseover($event)" ng-mouseout="onFromMouseout($event)" ></i>
                     </span>
                   </p>
                   <p class="env-action">
@@ -154,7 +156,7 @@
                 <div class="form-group">
                   <label for="" class="col-sm-3 control-label">Environment Type:</label>
                   <div class="col-sm-8">
-                    <select name="envType" ng-options="type.value as type.name for type in environmentTypes" ng-model="env.type">
+                    <select name="envType" class="form-control" ng-options="type.value as type.name for type in environmentTypes" ng-model="env.type">
                     </select>
                   </div>
                 </div>

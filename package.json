@@ -5,7 +5,7 @@
   "window": {
 
     "width": 850,
-    "height": 600
+    "height": 635
   },
   "scripts": {
     "test": "mocha app/test"
