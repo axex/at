@@ -9,7 +9,7 @@ var fs = require('fs-extra')
     , jsonFilePath = path.join(dataPath, 'evn.json')
     , extend = require('extend');
 
-var config = require('../config.json');
+var config = require('../../server-config.json');
 
 if(fs.existsSync(configPath)){
     extend(true, config, fs.readJSONSync(configPath));

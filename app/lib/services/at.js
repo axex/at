@@ -1,14 +1,11 @@
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
-var shell = require('shelljs');
-var Env = require('../services/environments');
-var bsHelper = require('../services/browserHelper');
-
-require('../services/at-server');
-
+var Env = require('./environments');
+var bsHelper = require('../helpers/browser');
 var exec = require('child_process').exec;
-
 var env = new Env();
+
+require('../at-server');
 
 function At () {
   EventEmitter.call(this);
@@ -50,6 +47,7 @@ At.prototype.onOpenBrowser = function () {
  */
 At.prototype.init = function () {
   this.onOpenBrowser();
+
 };
 
 At.prototype.getEnv = function () {

@@ -5,7 +5,7 @@
 var path = require('path');
 var util = require('util');
 
-var dataHelper = require('./dataHelper');
+var dataHelper = require('./data');
 var platform = require('./platform');
 var cfg = dataHelper.config;
 var cwd = process.cwd();

@@ -1,9 +1,5 @@
-/**
- * Created by trump.wang on 2015/3/7.
- */
-
 var extend = require('extend');
-var dataHelper = require('./dataHelper');
+var dataHelper = require('../helpers/data');
 var envModel = require('../models/environment');
 
 function Environment() {

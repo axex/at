@@ -1,13 +1,9 @@
-/**
- * Created by trump.wang on 2015/3/7.
- */
-
- var EventEmitter = require('events').EventEmitter;
+var EventEmitter = require('events').EventEmitter;
 
 global.$ = window.jQuery;
 global.atEmitter = window.atEmitter = new EventEmitter();
 
-var At = require('./services/at.js');
+var At = require('./lib/services/at.js');
 
 var app = new At();
 app.init();
@@ -41,7 +37,7 @@ angular.module('at', [])
         $rootScope.isAddingEnv = true;
       };
 
-      atEmitter.on('dataSource.change', function () {
+      atEmitter.on('dataSource.changed', function () {
         $scope.$apply(function () {
           $scope.environments = app.getEnv();
         });

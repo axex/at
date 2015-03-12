@@ -1,9 +1,9 @@
 /**
  * Created by trump.wang on 2015/3/7.
  */
-var dataHelper = require('./dataHelper');
+var dataHelper = require('./helpers/data');
 var cfg = dataHelper.config;
-var EnvService = require('./environments');
+var EnvService = require('./services/environments');
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -16,15 +16,15 @@ var app = express();
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(multer()); // for parsing multipart/form-data
-app.use(express.static( path.join(cwd, '/assets')) );
+app.use(express.static(path.join(cwd, '/app/assets')) );
 
 app.get('/', function(req, response){
-    serverStatic(response, path.join(cwd, "/statics/jump.html"));
+    serverStatic(response, path.join(cwd, "/app/proxies/jump.html"));
 });
 
 app.get('/dpw', function(req, res) {
   debugger;
-    serverStatic(res, path.join(cwd, "/statics/dpw.html"));
+    serverStatic(res, path.join(cwd, "/app/proxies/dpw.html"));
 });
 
 app.post('/env/update', function(req, res) {
@@ -46,7 +46,7 @@ app.post('/env/update', function(req, res) {
                 }
             });
 
-            atEmitter.emit('dataSource.change');
+            atEmitter.emit('dataSource.changed');
         }
 
         res.send(req.body);
