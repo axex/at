@@ -150,7 +150,7 @@ angular.module('at', [])
         var $this = $(event.currentTarget);
 
         var number = $scope.account.number;
-        var type = $scope.env.type;
+        var type = $scope.env.type || 'sw';
         var url = $scope.env.url;
         var browser = $.trim( $this.attr('name') );
         var params;
