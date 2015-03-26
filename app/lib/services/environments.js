@@ -79,7 +79,6 @@ Environment.prototype.save = function(updateObj) {
         });
     }
 
-    debugger;
     extend( detail, updateObj);
 
     if (updateObj.accounts.length > 0 && updateObj.url) {

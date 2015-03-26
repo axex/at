@@ -14,6 +14,7 @@ var config = require('../../server-config.json');
 if(fs.existsSync(configPath)){
     extend(true, config, fs.readJSONSync(configPath));
 }else{
+    fs.ensureDirSync(atDataRoot);
     fs.writeJSONSync(configPath, config)
 }
 

@@ -146,13 +146,15 @@ angular.module('at', [])
 
     .controller('AccountController', ['$scope', function ($scope) {
       $scope.startBrowser = function (event) {
+        debugger;
+
         event.preventDefault();
         var $this = $(event.currentTarget);
 
         var number = $scope.account.number;
         var type = $scope.env.type || 'sw';
         var url = $scope.env.url;
-        var browser = $.trim( $this.attr('name') );
+        var browser = $.trim( $this.data('name') );
         var params;
 
         switch (type) {
