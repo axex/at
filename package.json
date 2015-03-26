@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "main": "app/index.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "width": 850,
     "height": 635
   },
