@@ -1,0 +1,39 @@
+{
+  "name": "react-router",
+  "version": "0.13.2",
+  "description": "A complete routing library for React.js",
+  "main": "build/global/ReactRouter.js",
+  "homepage": "https://github.com/rackt/react-router",
+  "authors": [
+    "Ryan Florence",
+    "Michael Jackson"
+  ],
+  "keywords": [
+    "react",
+    "router"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "specs",
+    "modules",
+    "examples",
+    "script",
+    "CONTRIBUTING.md",
+    "karma.conf.js",
+    "package.json",
+    "webpack.config.js"
+  ],
+  "_release": "0.13.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.13.2",
+    "commit": "7f60ea666a5791f7d22b645f0a513f5dd89f580e"
+  },
+  "_source": "git://github.com/rackt/react-router.git",
+  "_target": "~0.13.2",
+  "_originalSource": "react-router",
+  "_direct": true
+}

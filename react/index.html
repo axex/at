@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>AT with React inside.</title>
+  <link href="assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../app/assets/css/font-browser.css"/>
+  <link rel="stylesheet" href="../app/assets/css/font-lato.css"/>
+  <link rel="stylesheet" href="../app/assets/css/main.css"/>
+  <link rel="stylesheet" href="../app/assets/css/footer.css"/>
+  <script src="assets/vendors/react/react.js"></script>
+  <script src="assets/vendors/react/JSXTransformer.js"></script>
+  <script src="assets/vendors/jquery/dist/jquery.min.js"></script>
+  <script src="assets/vendors/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">AT</a>
+            <p class="navbar-text">Login by just one-click!</p>
+          </div>
+          <button class="btn navbar-right navbar-btn btn-sm">
+            <i class="glyphicon glyphicon-plus"></i> Add an environment
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <section class="env-list row">
+        <div class="col-sm-8 environments"></div>
+        <div class="col-sm-4 sidebar"></div>
+      </section>
+    </div>
+
+  </div>
+  <script type="text/jsx" src="app.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "name": "AT",
   "version": "0.0.2",
-  "main": "app/index.html",
+  "main": "react/index.html",
   "window": {
     "width": 850,
     "height": 635
